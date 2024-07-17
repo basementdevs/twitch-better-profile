@@ -4,3 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+actix-web = "4.8.0"
+charybdis = "0.7.2"
+chrono = "0.4.38"
+colog = "1.3.0"
+dotenvy = "0.15.7"
+log = "0.4.22"
+scylla = { version = "0.13.1", features = ["chrono", "time"] }
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = "1.0.120"
+thiserror = "1.0.62"
+tokio = { version = "1.38.1", features = ["full"] }
+uuid = "1.10.0"

@@ -1,0 +1,134 @@
+{
+  "tables": {
+    "messages": {
+      "fields": [
+        [
+          "channel_id",
+          "int",
+          false
+        ],
+        [
+          "color",
+          "text",
+          false
+        ],
+        [
+          "content",
+          "text",
+          false
+        ],
+        [
+          "message_id",
+          "uuid",
+          false
+        ],
+        [
+          "sent_at",
+          "timestamp",
+          false
+        ],
+        [
+          "user_id",
+          "int",
+          false
+        ],
+        [
+          "username",
+          "text",
+          false
+        ]
+      ],
+      "field_names": [
+        "color",
+        "channel_id",
+        "content",
+        "message_id",
+        "sent_at",
+        "user_id",
+        "username"
+      ],
+      "types_by_name": {
+        "message_id": "uuid",
+        "sent_at": "timestamp",
+        "user_id": "int",
+        "channel_id": "int",
+        "color": "text",
+        "content": "text",
+        "username": "text"
+      },
+      "type_name": "",
+      "table_name": "",
+      "base_table": "",
+      "partition_keys": [
+        "channel_id"
+      ],
+      "clustering_keys": [
+        "sent_at"
+      ],
+      "static_columns": [],
+      "global_secondary_indexes": [
+        [
+          "messages_username_idx",
+          "username"
+        ]
+      ],
+      "local_secondary_indexes": [],
+      "table_options": null
+    }
+  },
+  "udts": {},
+  "materialized_views": {
+    "messages_username_idx_index": {
+      "fields": [
+        [
+          "channel_id",
+          "int",
+          false
+        ],
+        [
+          "idx_token",
+          "bigint",
+          false
+        ],
+        [
+          "sent_at",
+          "timestamp",
+          false
+        ],
+        [
+          "username",
+          "text",
+          false
+        ]
+      ],
+      "field_names": [
+        "idx_token",
+        "sent_at",
+        "username",
+        "channel_id"
+      ],
+      "types_by_name": {
+        "channel_id": "int",
+        "idx_token": "bigint",
+        "username": "text",
+        "sent_at": "timestamp"
+      },
+      "type_name": "",
+      "table_name": "",
+      "base_table": "",
+      "partition_keys": [
+        "username"
+      ],
+      "clustering_keys": [
+        "channel_id",
+        "idx_token",
+        "sent_at"
+      ],
+      "static_columns": [],
+      "global_secondary_indexes": [],
+      "local_secondary_indexes": [],
+      "table_options": null
+    }
+  },
+  "keyspace_name": "twitch"
+}
