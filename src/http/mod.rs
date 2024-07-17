@@ -1,4 +1,5 @@
 pub mod messages_controller;
+pub mod settings_controller;
 
 use actix_web::{HttpResponse, ResponseError};
 use charybdis::errors::CharybdisError;

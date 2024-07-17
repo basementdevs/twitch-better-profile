@@ -23,5 +23,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .app_data(Data::new(app_data.clone()))
             .service(http::messages_controller::post_submission)
+            .service(http::settings_controller::put_settings)
+            .service(http::settings_controller::get_settings)
     }).bind(addr)?.run().await
 }
