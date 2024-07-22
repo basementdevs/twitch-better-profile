@@ -1,11 +1,13 @@
-use actix_web::{get, HttpResponse, post, put, Responder, web};
-use charybdis::errors::CharybdisError;
+use actix_web::{get, HttpResponse, put, Responder, web};
 use charybdis::operations::{Find, Insert};
+use log::debug;
 use serde_json::json;
 use web::Json;
+
 use crate::config::app::AppState;
 use crate::http::SomeError;
-use crate::models::settings::{find_settings, Settings};
+use crate::models::materialized_views::settings_by_username::SettingsByUsername;
+use crate::models::settings::Settings;
 
 #[put("/settings")]
 pub async fn put_settings(
@@ -18,17 +20,22 @@ pub async fn put_settings(
     Ok(HttpResponse::Ok().json(json!(settings)))
 }
 
-#[get("/settings/{user_id}")]
+#[get("/settings/{username}")]
 pub async fn get_settings(
     data: web::Data<AppState>,
-    user_id: web::Path<i32>,
+    username: web::Path<String>,
 ) -> Result<impl Responder, SomeError> {
-    let settings = find_settings!( "user_id = ? PER PARTITION LIMIT 1;",(user_id.into_inner(),))
-        .execute(&data.database)
-        .await?;
+    let username = username.into_inner();
+
+    let settings = SettingsByUsername {
+        username,
+        ..Default::default()
+    };
+
+    let settings = settings.find_by_partition_key().execute(&data.database).await?;
 
     let settings = settings.try_collect().await?;
-
+    debug!("data: {:?}", settings.is_empty());
     let response = match settings.is_empty() {
         true => HttpResponse::NotFound().json(json!({})),
         false => HttpResponse::Ok().json(json!(settings[0].clone()))

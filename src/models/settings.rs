@@ -1,9 +1,7 @@
-use std::fmt;
 use charybdis::macros::charybdis_model;
-use charybdis::types::{Int, Text, Timestamp, Uuid};
-use chrono::{DateTime, TimeZone, Utc};
-use serde::{de, Deserialize, Deserializer, Serialize};
-use serde::de::Visitor;
+use charybdis::types::{Int, Text, Timestamp};
+use chrono::{DateTime, Utc};
+use serde::{Deserialize, Serialize};
 
 #[charybdis_model(
     table_name = settings,
@@ -19,13 +17,14 @@ use serde::de::Visitor;
 #[derive(Debug, Serialize, Deserialize, Default, Clone)]
 pub struct Settings {
     pub user_id: Int,
-    pub locale: Text,
+    pub username: Option<Text>,
+    pub locale: Option<Text>,
     pub timezone: Option<Text>,
-    pub pronouns: Text,
+    pub pronouns: Option<Text>,
     #[serde(default = "default_updated_at")]
     pub updated_at: Timestamp,
 }
 
-fn default_updated_at() -> DateTime<Utc> {
+pub fn default_updated_at() -> DateTime<Utc> {
     Utc::now()
 }

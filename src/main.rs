@@ -1,12 +1,14 @@
-mod config;
-mod http;
-mod models;
-
 use std::sync::Arc;
+
 use actix_web::{App, HttpServer};
 use actix_web::web::Data;
 use log::debug;
+
 use crate::config::app::AppState;
+
+mod config;
+mod http;
+mod models;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
