@@ -1,0 +1,20 @@
+{
+  "extends": "plasmo/templates/tsconfig.base",
+  "exclude": [
+    "node_modules"
+  ],
+  "include": ["./**/*.ts", "./**/*.tsx", ".plasmo/index.d.ts"],
+  "compilerOptions": {
+    "types": [
+      "firefox-webext-browser",
+      "chrome"
+    ],
+    "paths": {
+      "~*": ["./src/*"],
+      "@Shad/*": ["./src/resources/shad/*"],
+      "@Components/*": ["./src/resources/components/*"],
+      "@Pages/*": ["./src/resources/pages/*"]
+    },
+    "baseUrl": "."
+  },
+}
