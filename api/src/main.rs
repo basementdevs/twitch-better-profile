@@ -2,6 +2,7 @@ use std::sync::Arc;
 
 use actix_web::{App, HttpServer};
 use actix_web::web::Data;
+use actix_cors::Cors;
 use log::debug;
 
 use crate::config::app::AppState;
@@ -22,7 +23,13 @@ async fn main() -> std::io::Result<()> {
     );
     debug!("Web Server Online!");
     HttpServer::new(move || {
+        let cors = Cors::default()
+            .allow_any_origin()
+            .allow_any_method()
+            .allow_any_header()
+            .max_age(3600);
         App::new()
+            .wrap(cors)
             .app_data(Data::new(app_data.clone()))
             .service(http::messages_controller::post_submission)
             .service(http::settings_controller::put_settings)
