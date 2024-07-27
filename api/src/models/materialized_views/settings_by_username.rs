@@ -17,6 +17,7 @@ pub struct SettingsByUsername {
     pub username: Text,
     pub locale: Option<Text>,
     pub timezone: Option<Text>,
+    pub occupation: Option<Text>,
     pub pronouns: Option<Text>,
     pub updated_at: Timestamp,
 }
