@@ -20,6 +20,7 @@ pub struct Settings {
     pub username: Option<Text>,
     pub locale: Option<Text>,
     pub timezone: Option<Text>,
+    pub occupation: Option<Text>,
     pub pronouns: Option<Text>,
     #[serde(default = "default_updated_at")]
     pub updated_at: Timestamp,
