@@ -60,10 +60,14 @@ async fn main() -> std::io::Result<()> {
             .max_age(3600);
 
         App::new()
+
             .wrap(cors)
             .app_data(Data::new(app_data.clone()))
+            .service(actix_files::Files::new("/static", "./static")
+                .use_last_modified(true))
             .service(http::messages_controller::post_submission)
             .service(http::settings_controller::put_settings)
             .service(http::settings_controller::get_settings)
+    //}).bind(addr)?.run().await
     }).bind_rustls_0_23(addr, tls_config)?.run().await
 }

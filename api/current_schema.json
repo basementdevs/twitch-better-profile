@@ -8,6 +8,11 @@
           false
         ],
         [
+          "occupation",
+          "text",
+          false
+        ],
+        [
           "pronouns",
           "text",
           false
@@ -34,20 +39,22 @@
         ]
       ],
       "field_names": [
-        "username",
-        "updated_at",
-        "user_id",
         "pronouns",
-        "locale",
-        "timezone"
+        "timezone",
+        "user_id",
+        "username",
+        "occupation",
+        "updated_at",
+        "locale"
       ],
       "types_by_name": {
+        "occupation": "text",
+        "timezone": "text",
         "username": "text",
-        "pronouns": "text",
-        "updated_at": "timestamp",
         "user_id": "int",
+        "updated_at": "timestamp",
         "locale": "text",
-        "timezone": "text"
+        "pronouns": "text"
       },
       "type_name": "",
       "table_name": "",
@@ -102,22 +109,22 @@
         ]
       ],
       "field_names": [
-        "user_id",
-        "content",
-        "username",
-        "color",
-        "message_id",
         "sent_at",
-        "channel_id"
+        "content",
+        "user_id",
+        "username",
+        "message_id",
+        "channel_id",
+        "color"
       ],
       "types_by_name": {
+        "message_id": "uuid",
+        "username": "text",
         "sent_at": "timestamp",
         "content": "text",
         "user_id": "int",
-        "message_id": "uuid",
-        "username": "text",
-        "channel_id": "int",
-        "color": "text"
+        "color": "text",
+        "channel_id": "int"
       },
       "type_name": "",
       "table_name": "",
@@ -141,57 +148,6 @@
   },
   "udts": {},
   "materialized_views": {
-    "messages_username_idx_index": {
-      "fields": [
-        [
-          "channel_id",
-          "int",
-          false
-        ],
-        [
-          "idx_token",
-          "bigint",
-          false
-        ],
-        [
-          "sent_at",
-          "timestamp",
-          false
-        ],
-        [
-          "username",
-          "text",
-          false
-        ]
-      ],
-      "field_names": [
-        "username",
-        "channel_id",
-        "idx_token",
-        "sent_at"
-      ],
-      "types_by_name": {
-        "idx_token": "bigint",
-        "channel_id": "int",
-        "sent_at": "timestamp",
-        "username": "text"
-      },
-      "type_name": "",
-      "table_name": "",
-      "base_table": "",
-      "partition_keys": [
-        "username"
-      ],
-      "clustering_keys": [
-        "channel_id",
-        "idx_token",
-        "sent_at"
-      ],
-      "static_columns": [],
-      "global_secondary_indexes": [],
-      "local_secondary_indexes": [],
-      "table_options": null
-    },
     "settings_by_username": {
       "fields": [
         [
@@ -227,19 +183,19 @@
       ],
       "field_names": [
         "username",
-        "pronouns",
-        "locale",
         "timezone",
-        "updated_at",
-        "user_id"
+        "locale",
+        "pronouns",
+        "user_id",
+        "updated_at"
       ],
       "types_by_name": {
-        "locale": "text",
-        "updated_at": "timestamp",
-        "timezone": "text",
         "pronouns": "text",
-        "username": "text",
-        "user_id": "int"
+        "user_id": "int",
+        "locale": "text",
+        "timezone": "text",
+        "updated_at": "timestamp",
+        "username": "text"
       },
       "type_name": "",
       "table_name": "",
@@ -250,6 +206,57 @@
       "clustering_keys": [
         "updated_at",
         "user_id"
+      ],
+      "static_columns": [],
+      "global_secondary_indexes": [],
+      "local_secondary_indexes": [],
+      "table_options": null
+    },
+    "messages_username_idx_index": {
+      "fields": [
+        [
+          "channel_id",
+          "int",
+          false
+        ],
+        [
+          "idx_token",
+          "bigint",
+          false
+        ],
+        [
+          "sent_at",
+          "timestamp",
+          false
+        ],
+        [
+          "username",
+          "text",
+          false
+        ]
+      ],
+      "field_names": [
+        "sent_at",
+        "channel_id",
+        "username",
+        "idx_token"
+      ],
+      "types_by_name": {
+        "idx_token": "bigint",
+        "username": "text",
+        "sent_at": "timestamp",
+        "channel_id": "int"
+      },
+      "type_name": "",
+      "table_name": "",
+      "base_table": "",
+      "partition_keys": [
+        "username"
+      ],
+      "clustering_keys": [
+        "channel_id",
+        "idx_token",
+        "sent_at"
       ],
       "static_columns": [],
       "global_secondary_indexes": [],
