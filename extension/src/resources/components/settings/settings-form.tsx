@@ -18,8 +18,7 @@ export default function SettingsForm({user}: SettingsFormProps) {
     let updatePronouns = async () => {
         console.log('Updating pronouns')
 
-
-        let response = await fetch('http://localhost:8000/settings', {
+        let response = await fetch('https://twitch-extension.danielheart.dev/settings', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +33,6 @@ export default function SettingsForm({user}: SettingsFormProps) {
 
         if (response.ok) {
             alert('foi caraio')
-
         }
     }
 

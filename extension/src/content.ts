@@ -38,9 +38,10 @@ let mutation = new MutationObserver((mutations) => {
     }
 
     let username = usernameEl.textContent;
-    console.log(usernameEl);
+    console.log(username);
+    let uri = `https://twitch-extension.danielheart.dev/settings/${username}`;
 
-    fetch(`http://localhost:8000/settings/${username}`)
+    fetch(uri)
         .then(async response => {
 
             if (!response.ok) {
