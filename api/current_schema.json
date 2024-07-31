@@ -39,22 +39,22 @@
         ]
       ],
       "field_names": [
-        "pronouns",
-        "timezone",
-        "user_id",
-        "username",
+        "locale",
         "occupation",
+        "timezone",
+        "pronouns",
         "updated_at",
-        "locale"
+        "user_id",
+        "username"
       ],
       "types_by_name": {
-        "occupation": "text",
         "timezone": "text",
-        "username": "text",
-        "user_id": "int",
+        "pronouns": "text",
         "updated_at": "timestamp",
+        "user_id": "int",
+        "username": "text",
         "locale": "text",
-        "pronouns": "text"
+        "occupation": "text"
       },
       "type_name": "",
       "table_name": "",
@@ -64,6 +64,288 @@
       ],
       "clustering_keys": [
         "updated_at"
+      ],
+      "static_columns": [],
+      "global_secondary_indexes": [],
+      "local_secondary_indexes": [],
+      "table_options": null
+    },
+    "simple_udt_test": {
+      "fields": [
+        [
+          "ck",
+          "int",
+          false
+        ],
+        [
+          "pk",
+          "int",
+          false
+        ],
+        [
+          "ut_col",
+          "frozen<ut>",
+          false
+        ]
+      ],
+      "field_names": [
+        "pk",
+        "ut_col",
+        "ck"
+      ],
+      "types_by_name": {
+        "ut_col": "frozen<ut>",
+        "ck": "int",
+        "pk": "int"
+      },
+      "type_name": "",
+      "table_name": "",
+      "base_table": "",
+      "partition_keys": [
+        "pk"
+      ],
+      "clustering_keys": [
+        "ck"
+      ],
+      "static_columns": [],
+      "global_secondary_indexes": [],
+      "local_secondary_indexes": [],
+      "table_options": null
+    },
+    "settings_scylla_cdc_log": {
+      "fields": [
+        [
+          "cdc$batch_seq_no",
+          "int",
+          false
+        ],
+        [
+          "cdc$deleted_locale",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$deleted_occupation",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$deleted_pronouns",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$deleted_timezone",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$deleted_username",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$end_of_batch",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$operation",
+          "tinyint",
+          false
+        ],
+        [
+          "cdc$stream_id",
+          "blob",
+          false
+        ],
+        [
+          "cdc$time",
+          "timeuuid",
+          false
+        ],
+        [
+          "cdc$ttl",
+          "bigint",
+          false
+        ],
+        [
+          "locale",
+          "text",
+          false
+        ],
+        [
+          "occupation",
+          "text",
+          false
+        ],
+        [
+          "pronouns",
+          "text",
+          false
+        ],
+        [
+          "timezone",
+          "text",
+          false
+        ],
+        [
+          "updated_at",
+          "timestamp",
+          false
+        ],
+        [
+          "user_id",
+          "int",
+          false
+        ],
+        [
+          "username",
+          "text",
+          false
+        ]
+      ],
+      "field_names": [
+        "cdc$operation",
+        "cdc$end_of_batch",
+        "updated_at",
+        "cdc$ttl",
+        "cdc$deleted_timezone",
+        "cdc$deleted_locale",
+        "cdc$batch_seq_no",
+        "cdc$deleted_occupation",
+        "cdc$deleted_pronouns",
+        "cdc$deleted_username",
+        "cdc$time",
+        "timezone",
+        "user_id",
+        "username",
+        "locale",
+        "occupation",
+        "pronouns",
+        "cdc$stream_id"
+      ],
+      "types_by_name": {
+        "pronouns": "text",
+        "locale": "text",
+        "occupation": "text",
+        "cdc$batch_seq_no": "int",
+        "cdc$deleted_username": "boolean",
+        "cdc$deleted_occupation": "boolean",
+        "cdc$operation": "tinyint",
+        "cdc$deleted_pronouns": "boolean",
+        "cdc$deleted_locale": "boolean",
+        "timezone": "text",
+        "cdc$end_of_batch": "boolean",
+        "cdc$ttl": "bigint",
+        "cdc$stream_id": "blob",
+        "cdc$deleted_timezone": "boolean",
+        "cdc$time": "timeuuid",
+        "user_id": "int",
+        "username": "text",
+        "updated_at": "timestamp"
+      },
+      "type_name": "",
+      "table_name": "",
+      "base_table": "",
+      "partition_keys": [
+        "cdc$stream_id"
+      ],
+      "clustering_keys": [
+        "cdc$batch_seq_no",
+        "cdc$time"
+      ],
+      "static_columns": [],
+      "global_secondary_indexes": [],
+      "local_secondary_indexes": [],
+      "table_options": null
+    },
+    "simple_udt_test_scylla_cdc_log": {
+      "fields": [
+        [
+          "cdc$batch_seq_no",
+          "int",
+          false
+        ],
+        [
+          "cdc$deleted_ut_col",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$end_of_batch",
+          "boolean",
+          false
+        ],
+        [
+          "cdc$operation",
+          "tinyint",
+          false
+        ],
+        [
+          "cdc$stream_id",
+          "blob",
+          false
+        ],
+        [
+          "cdc$time",
+          "timeuuid",
+          false
+        ],
+        [
+          "cdc$ttl",
+          "bigint",
+          false
+        ],
+        [
+          "ck",
+          "int",
+          false
+        ],
+        [
+          "pk",
+          "int",
+          false
+        ],
+        [
+          "ut_col",
+          "frozen<ut>",
+          false
+        ]
+      ],
+      "field_names": [
+        "ck",
+        "ut_col",
+        "cdc$ttl",
+        "cdc$stream_id",
+        "cdc$operation",
+        "cdc$time",
+        "cdc$end_of_batch",
+        "pk",
+        "cdc$deleted_ut_col",
+        "cdc$batch_seq_no"
+      ],
+      "types_by_name": {
+        "cdc$batch_seq_no": "int",
+        "cdc$operation": "tinyint",
+        "cdc$deleted_ut_col": "boolean",
+        "cdc$end_of_batch": "boolean",
+        "pk": "int",
+        "cdc$ttl": "bigint",
+        "cdc$stream_id": "blob",
+        "cdc$time": "timeuuid",
+        "ck": "int",
+        "ut_col": "frozen<ut>"
+      },
+      "type_name": "",
+      "table_name": "",
+      "base_table": "",
+      "partition_keys": [
+        "cdc$stream_id"
+      ],
+      "clustering_keys": [
+        "cdc$batch_seq_no",
+        "cdc$time"
       ],
       "static_columns": [],
       "global_secondary_indexes": [],
@@ -109,22 +391,22 @@
         ]
       ],
       "field_names": [
-        "sent_at",
-        "content",
-        "user_id",
-        "username",
         "message_id",
         "channel_id",
+        "user_id",
+        "username",
+        "content",
+        "sent_at",
         "color"
       ],
       "types_by_name": {
-        "message_id": "uuid",
-        "username": "text",
+        "color": "text",
+        "channel_id": "int",
         "sent_at": "timestamp",
         "content": "text",
-        "user_id": "int",
-        "color": "text",
-        "channel_id": "int"
+        "username": "text",
+        "message_id": "uuid",
+        "user_id": "int"
       },
       "type_name": "",
       "table_name": "",
@@ -146,12 +428,49 @@
       "table_options": null
     }
   },
-  "udts": {},
+  "udts": {
+    "ut": {
+      "fields": [
+        [
+          "int_val",
+          "int",
+          false
+        ],
+        [
+          "bool_val",
+          "boolean",
+          false
+        ]
+      ],
+      "field_names": [
+        "int_val",
+        "bool_val"
+      ],
+      "types_by_name": {
+        "bool_val": "boolean",
+        "int_val": "int"
+      },
+      "type_name": "",
+      "table_name": "",
+      "base_table": "",
+      "partition_keys": [],
+      "clustering_keys": [],
+      "static_columns": [],
+      "global_secondary_indexes": [],
+      "local_secondary_indexes": [],
+      "table_options": null
+    }
+  },
   "materialized_views": {
     "settings_by_username": {
       "fields": [
         [
           "locale",
+          "text",
+          false
+        ],
+        [
+          "occupation",
           "text",
           false
         ],
@@ -182,20 +501,22 @@
         ]
       ],
       "field_names": [
-        "username",
-        "timezone",
         "locale",
         "pronouns",
-        "user_id",
-        "updated_at"
+        "updated_at",
+        "username",
+        "occupation",
+        "timezone",
+        "user_id"
       ],
       "types_by_name": {
+        "username": "text",
         "pronouns": "text",
-        "user_id": "int",
-        "locale": "text",
         "timezone": "text",
-        "updated_at": "timestamp",
-        "username": "text"
+        "occupation": "text",
+        "locale": "text",
+        "user_id": "int",
+        "updated_at": "timestamp"
       },
       "type_name": "",
       "table_name": "",
@@ -236,16 +557,16 @@
         ]
       ],
       "field_names": [
-        "sent_at",
         "channel_id",
-        "username",
-        "idx_token"
+        "idx_token",
+        "sent_at",
+        "username"
       ],
       "types_by_name": {
-        "idx_token": "bigint",
         "username": "text",
         "sent_at": "timestamp",
-        "channel_id": "int"
+        "channel_id": "int",
+        "idx_token": "bigint"
       },
       "type_name": "",
       "table_name": "",
