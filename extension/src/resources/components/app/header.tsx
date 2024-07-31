@@ -5,7 +5,7 @@ import { User as UserIcon } from "lucide-react"
 export default function Header() {
   return (
     <div className="flex my-2 flex-row justify-between px-3 items-center">
-      <div className="flex flex-row">
+      <div className="flex gap-2 dark:text-twitch-11">
         <UserIcon />
         <H4>Twitch Profiler</H4>
       </div>

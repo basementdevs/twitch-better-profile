@@ -17,6 +17,21 @@ module.exports = {
     },
     extend: {
       colors: {
+        twitch: {
+          DEFAULT: "var(--twitch-9)",
+          1: "var(--twitch-1)",
+          2: "var(--twitch-2)",
+          3: "var(--twitch-3)",
+          4: "var(--twitch-4)",
+          5: "var(--twitch-5)",
+          6: "var(--twitch-6)",
+          7: "var(--twitch-7)",
+          8: "var(--twitch-8)",
+          9: "var(--twitch-9)",
+          10: "var(--twitch-10)",
+          11: "var(--twitch-11)",
+          12: "var(--twitch-12)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

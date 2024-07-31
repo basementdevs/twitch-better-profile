@@ -1,8 +1,6 @@
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
-import type { TwitchUser } from "~types/types"
-
-const CLIENT_ID = "vfir3y164p9aiv3v6nkbsjg0wdx4za"
+const CLIENT_ID = "a4f3idddt9bq45u7cmj64gy9lp6dr7"
 const REDIRECT_URI = browser.identity.getRedirectURL()
 
 const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
