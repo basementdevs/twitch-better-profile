@@ -1,3 +1,24 @@
+{
+}
+
+import type {PlasmoCSConfig} from "plasmo"
+import {sendToBackground} from "@plasmohq/messaging"
+
+export const config: PlasmoCSConfig = {
+    matches: [
+        "https://dashboard.twitch.tv/u/*/stream-manager",
+        "https://www.twitch.tv/embed/*/chat*",
+        "https://www.twitch.tv/*"
+    ],
+    exclude_matches: [
+        "*://*.twitch.tv/*.html",
+        "*://*.twitch.tv/*.html?*",
+        "*://*.twitch.tv/*.htm",
+        "*://*.twitch.tv/*.htm?*"
+    ],
+    all_frames: true
+}
+
 const buildBadge = (badge) => {
     // Create a div element
     const badgeContainer = document.createElement('div');
@@ -71,7 +92,6 @@ let mutation = new MutationObserver((mutations) => {
                 return
             }
 
-
             let res = await response.json();
             console.log(res)
 
@@ -91,9 +111,20 @@ let mutation = new MutationObserver((mutations) => {
     messageEl = null;
 });
 
-const chat = document.querySelector('.chat-scrollable-area__message-container');
-if (chat) {
+console.log('puta que pariu funciona')
+
+const appLoader = () => {
+    console.log('carregou')
+    let chat = document.querySelector('.chat-list--default');
+    if (!chat) {
+        return setTimeout(appLoader, 3000);
+    }
+
     console.log("observer on");
     const mutationConfig = {childList: true, subtree: true, characterData: true};
     mutation.observe(chat, mutationConfig);
 }
+
+setTimeout(appLoader, 3000)
+
+
