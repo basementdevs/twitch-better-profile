@@ -1,3 +1,23 @@
+const buildBadge = (badge) => {
+    // Create a div element
+    const badgeContainer = document.createElement('div');
+    badgeContainer.className = "InjectLayout-sc-1i43xsx-0 jbmPmA";
+
+    // Create an img element
+    const img = document.createElement('img');
+    img.alt = "Just a thing";
+    img.width = 18;
+    img.setAttribute('aria-label', 'Just a thing');
+    img.className = "chat-badge";
+    img.src = "https://twitch-extension.danielheart.dev/static/icons/mod.png";
+    img.srcset = "https://twitch-extension.danielheart.dev/static/icons/mod.png 1x,https://twitch-extension.danielheart.dev/static/icons/mod.png 2x,https://twitch-extension.danielheart.dev/static/icons/mod.png 4x";
+
+    // Append the img to the div
+    badgeContainer.appendChild(img);
+
+    return badgeContainer;
+}
+
 let mutation = new MutationObserver((mutations) => {
 
     if (mutations[0].previousSibling.localName === 'span') {
@@ -33,6 +53,10 @@ let mutation = new MutationObserver((mutations) => {
     }
 
     let usernameEl = messageEl.querySelector('.chat-line__username');
+    let badgesEl = messageEl.querySelector('.chat-line__username-container').childNodes[0];
+
+    console.log(badgesEl);
+
     if (!usernameEl) {
         return;
     }
@@ -43,12 +67,14 @@ let mutation = new MutationObserver((mutations) => {
 
     fetch(uri)
         .then(async response => {
-
             if (!response.ok) {
                 return
             }
 
+
             let res = await response.json();
+            console.log(res)
+
             const child = usernameEl.firstChild;
 
             const pronouns = res.pronouns;
@@ -58,6 +84,7 @@ let mutation = new MutationObserver((mutations) => {
             pronounsElement.style.marginLeft = "4px";
             if (child) {
                 usernameEl.appendChild(pronounsElement);
+                badgesEl.appendChild(buildBadge(res.occupation), badgesEl.firstChild);
             }
         }).catch(err => console.error(err));
 
