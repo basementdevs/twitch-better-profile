@@ -111,16 +111,14 @@ let mutation = new MutationObserver((mutations) => {
     messageEl = null;
 });
 
-console.log('puta que pariu funciona')
-
 const appLoader = () => {
-    console.log('carregou')
+    console.log('TBP: Loading Twitch Better Profile...')
     let chat = document.querySelector('.chat-list--default');
     if (!chat) {
         return setTimeout(appLoader, 3000);
     }
 
-    console.log("observer on");
+    console.log("TBP: Loaded! Starting to listen to new messages...");
     const mutationConfig = {childList: true, subtree: true, characterData: true};
     mutation.observe(chat, mutationConfig);
 }
