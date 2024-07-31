@@ -23,8 +23,7 @@ export default function ProfileCard({
           <h1
             className="font-extrabold text-lg m-0 line-clamp-1"
             id="usernameEl">
-            {/* {user.display_name} */}
-            Felipi Lima Matozinho Felipi Lima Matozinho
+            {user.display_name}
           </h1>
           <p
             className="text-gray-600 dark:text-gray-300 text-sm m-0 p-0"
