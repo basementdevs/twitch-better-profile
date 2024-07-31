@@ -1,3 +1,5 @@
+{ } // NOTE: [daniel-boll] - This appear to be necessary, I'll check this later with @danielhe4rt
+
 import type { PlasmoCSConfig } from "plasmo"
 
 export const config: PlasmoCSConfig = {
