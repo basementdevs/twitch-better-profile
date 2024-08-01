@@ -12,31 +12,37 @@ export default function ProfileCard({
   occupation
 }: ProfileCardProps) {
   return (
-    <div className="flex gap-4 mx-4 my-4">
+    <div className="flex items-center mx-4 my-4 rounded-xl bg-muted">
       <img
         src={user.profile_image_url}
         alt="Profile Image"
-        className="size-28 rounded-3xl p-1"
+        className="size-28 rounded-xl p-1"
       />
-      <div>
+      <div className="p-2">
         <div className="flex flex-col">
-          <h1 className="text-white font-extrabold text-lg m-0" id="usernameEl">
+          <h1
+            className="font-extrabold text-lg m-0 line-clamp-1"
+            id="usernameEl">
             {user.display_name}
           </h1>
-          <p className="text-gray-400 text-lg m-0 p-0" id="roleEl">
+          <p
+            className="text-gray-600 dark:text-gray-300 text-sm m-0 p-0"
+            id="roleEl">
             {occupation ?? "None"}
           </p>
         </div>
         <div className="mt-2">
-          <p className="text-white font-extrabold text-sm">
-            <span> ID: </span>
-            <span className="text-gray-400 ml-2" id="idEl">
+          <p className="text-sm">
+            <span className="font-bold">ID:</span>
+            <span className="text-gray-600 dark:text-gray-300 ml-2" id="idEl">
               {user.id}
             </span>
           </p>
-          <p className="text-white font-extrabold text-sm">
-            <span> Pronouns: </span>
-            <span className="text-gray-400 ml-2" id="pronounsEl">
+          <p className="text-sm">
+            <span className="font-bold">Pronouns:</span>
+            <span
+              className="text-gray-600 dark:text-gray-300 ml-2"
+              id="pronounsEl">
               {pronouns}
             </span>
           </p>

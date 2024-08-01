@@ -18,7 +18,7 @@ export default function Profile({ user }: ProfileProps) {
   )
 
   return (
-    <div>
+    <div className="max-w-96">
       <Header />
       <div>
         <ProfileCard
