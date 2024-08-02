@@ -1,6 +1,9 @@
-{ } // NOTE: [daniel-boll] - This appear to be necessary, I'll check this later with @danielhe4rt
+// NOTE: [daniel-boll] - This appear to be necessary, I'll check this later with @danielhe4rt
 
 import type { PlasmoCSConfig } from "plasmo"
+
+{
+}
 
 export const config: PlasmoCSConfig = {
   matches: [
@@ -17,6 +20,9 @@ export const config: PlasmoCSConfig = {
   all_frames: true
 }
 
+// @ts-ignore
+const API_URL: string = process.env.PLASMO_PUBLIC_API_URL
+
 const buildBadge = (_badge) => {
   // Create a div element
   const badgeContainer = document.createElement("div")
@@ -28,9 +34,8 @@ const buildBadge = (_badge) => {
   img.width = 18
   img.setAttribute("aria-label", "Just a thing")
   img.className = "chat-badge"
-  img.src = "https://twitch-extension.danielheart.dev/static/icons/mod.png"
-  img.srcset =
-    "https://twitch-extension.danielheart.dev/static/icons/mod.png 1x,https://twitch-extension.danielheart.dev/static/icons/mod.png 2x,https://twitch-extension.danielheart.dev/static/icons/mod.png 4x"
+  img.src = `${API_URL}/static/icons/mod.png`
+  img.srcset = `${API_URL}/static/icons/mod.png 1x,${API_URL}/static/icons/mod.png 2x,${API_URL}/static/icons/mod.png 4x`
 
   // Append the img to the div
   badgeContainer.appendChild(img)
@@ -39,6 +44,7 @@ const buildBadge = (_badge) => {
 }
 
 let mutation = new MutationObserver((mutations) => {
+  // @ts-ignore
   if (mutations[0].previousSibling.localName === "span") {
     return
   }
@@ -83,7 +89,7 @@ let mutation = new MutationObserver((mutations) => {
 
   let username = usernameEl.textContent
   console.log(username)
-  let uri = `https://twitch-extension.danielheart.dev/settings/${username}`
+  let uri = `${API_URL}/settings/${username}`
 
   fetch(uri)
     .then(async (response) => {
