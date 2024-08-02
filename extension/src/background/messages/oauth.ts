@@ -1,6 +1,11 @@
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
-const CLIENT_ID = "a4f3idddt9bq45u7cmj64gy9lp6dr7"
+import type { TwitchUser } from "~types/types"
+
+// @ts-ignore
+const CLIENT_ID = process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID
+// @ts-ignore
+const TWITCH_API_URL = process.env.PLASMO_PUBLIC_TWITCH_API_URL
 const REDIRECT_URI = browser.identity.getRedirectURL()
 
 const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
@@ -18,7 +23,7 @@ const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
 
   await browser.storage.local.set({ accessToken })
 
-  let authenticatedUser = await fetch("https://api.twitch.tv/helix/users", {
+  let authenticatedUser = await fetch(TWITCH_API_URL + "/users", {
     headers: {
       "Client-ID": CLIENT_ID,
       Authorization: `Bearer ${accessToken}`
