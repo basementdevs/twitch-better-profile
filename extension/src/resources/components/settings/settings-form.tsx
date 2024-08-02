@@ -38,7 +38,7 @@ export default function SettingsForm({
     const selectedPronoun = pronounsListEl.current.value
     const selectedOccupation = occupationListEl.current.value
     const response = await fetch(
-      "https://twitch-extension.danielheart.dev/settings",
+        process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID + "/settings",
       {
         method: "PUT",
         headers: {

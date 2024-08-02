@@ -4,7 +4,7 @@ import { ThemeProvider } from "@Components/app/theme-provide"
 import { Auth } from "@Pages/auth"
 import Profile from "@Pages/profile"
 import { useEffect, useState } from "react"
-import { browser } from "webextension-polyfill-ts"
+import browser from "webextension-polyfill";
 
 import type { TwitchUser } from "~types/types"
 
@@ -20,7 +20,7 @@ function IndexPopup() {
     getUser().then(setUser)
 
     const handleStorageChange = (changes: {
-      [key: string]: browser.storage.StorageChange
+      [key: string]: browser.Storage.StorageChange
     }) => {
       if (changes.user) {
         setUser(changes.user.newValue as TwitchUser)
