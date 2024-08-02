@@ -1,11 +1,12 @@
+import env from "@Config/env"
+
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 import type { TwitchUser } from "~types/types"
 
-// @ts-ignore
-const CLIENT_ID = process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID
-// @ts-ignore
-const TWITCH_API_URL = process.env.PLASMO_PUBLIC_TWITCH_API_URL
+const CLIENT_ID = env.PLASMO_PUBLIC_TWITCH_CLIENT_ID
+const TWITCH_API_URL = env.PLASMO_PUBLIC_TWITCH_API_URL
+
 const REDIRECT_URI = browser.identity.getRedirectURL()
 
 const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
