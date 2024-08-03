@@ -35,6 +35,7 @@ export default function Profile({ user }: ProfileProps) {
         />
       </div>
       <Button
+          className={"w-full"}
         onClick={() => {
           storage.clear()
         }}>
