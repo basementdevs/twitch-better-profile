@@ -1,11 +1,11 @@
-import env from "@Config/env"
+import browser from "webextension-polyfill"
 
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 import type { TwitchUser } from "~types/types"
 
-const CLIENT_ID = env.PLASMO_PUBLIC_TWITCH_CLIENT_ID
-const TWITCH_API_URL = env.PLASMO_PUBLIC_TWITCH_API_URL
+const CLIENT_ID = process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID
+const TWITCH_API_URL = process.env.PLASMO_PUBLIC_TWITCH_API_URL
 
 const REDIRECT_URI = browser.identity.getRedirectURL()
 

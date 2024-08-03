@@ -1,6 +1,6 @@
 import { z, ZodError } from "zod"
 
-const envVariables = {
+const raw_env = {
   PLASMO_PUBLIC_TWITCH_CLIENT_ID: process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID,
   PLASMO_PUBLIC_TWITCH_API_URL: process.env.PLASMO_PUBLIC_TWITCH_API_URL,
   PLASMO_PUBLIC_API_URL: process.env.PLASMO_PUBLIC_API_URL
@@ -21,6 +21,7 @@ const envSchema = z.object({
     .min(1, "PLASMO_PUBLIC_API_URL is missing or empty")
 })
 
+
 const mapZodErrorMessages = (zodError: ZodError): string[] => {
   return zodError.errors.map((error) => {
     const path = error.path.length ? error.path.join(".") : "root"
@@ -28,7 +29,7 @@ const mapZodErrorMessages = (zodError: ZodError): string[] => {
   })
 }
 
-const env = envSchema.safeParse(envVariables)
+const env = envSchema.safeParse(raw_env)
 
 if (!env.success) {
   if (env.error instanceof ZodError) {
@@ -41,4 +42,5 @@ if (!env.success) {
   throw new Error("Invalid environment variables")
 }
 
-export default env.data
+
+export { env }
