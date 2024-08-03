@@ -1,21 +1,19 @@
 import { Label } from "@Shad/components/ui/label"
 import { useRef, type MutableRefObject } from "react"
 
+import { Storage } from "@plasmohq/storage"
+
 import type { TwitchUser } from "~types/types"
 
 interface SettingsFormProps {
   user?: TwitchUser
   pronouns?: string
-  setPronoun?: (value: ((prevState: string) => string) | string) => void
-  setOccupation?: (value: ((prevState: string) => string) | string) => void
   occupation?: string
 }
 
 export default function SettingsForm({
   user,
   pronouns,
-  setPronoun,
-  setOccupation,
   occupation
 }: SettingsFormProps) {
   const pronounsListEl: MutableRefObject<HTMLSelectElement> = useRef(null)
@@ -34,11 +32,12 @@ export default function SettingsForm({
   ]
 
   const updateSettings = async () => {
+    const storage = new Storage()
     console.log("Updating pronouns")
     const selectedPronoun = pronounsListEl.current.value
     const selectedOccupation = occupationListEl.current.value
     const response = await fetch(
-        process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID + "/settings",
+      process.env.PLASMO_PUBLIC_API_URL + "/settings",
       {
         method: "PUT",
         headers: {
@@ -54,12 +53,9 @@ export default function SettingsForm({
       }
     )
 
-    localStorage.setItem("pronouns", selectedPronoun)
-    localStorage.setItem("occupation", selectedOccupation)
-
     if (response.ok) {
-      setPronoun(selectedPronoun)
-      setOccupation(selectedOccupation)
+      await storage.set("pronouns", selectedPronoun)
+      await storage.set("occupation", selectedOccupation)
     }
   }
 

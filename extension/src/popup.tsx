@@ -1,40 +1,23 @@
+
+
+
 import "~style.css"
 
 import { ThemeProvider } from "@Components/app/theme-provide"
 import { Auth } from "@Pages/auth"
 import Profile from "@Pages/profile"
-import { useEffect, useState } from "react"
-import browser from "webextension-polyfill";
 
-import type { TwitchUser } from "~types/types"
+import { Storage } from "@plasmohq/storage"
+import { useStorage } from "@plasmohq/storage/dist/hook"
+
+
+
+
+
+const storage = new Storage()
 
 function IndexPopup() {
-  let [user, setUser] = useState<TwitchUser | null>(null)
-
-  async function getUser() {
-    const res = browser.storage.local.get("user")
-    return (await res).user as TwitchUser | null
-  }
-
-  useEffect(() => {
-    getUser().then(setUser)
-
-    const handleStorageChange = (changes: {
-      [key: string]: browser.Storage.StorageChange
-    }) => {
-      if (changes.user) {
-        setUser(changes.user.newValue as TwitchUser)
-      }
-    }
-
-    // Add the storage change listener
-    browser.storage.onChanged.addListener(handleStorageChange)
-
-    // Cleanup listener on component unmount
-    return () => {
-      browser.storage.onChanged.removeListener(handleStorageChange)
-    }
-  }, [])
+  const [user] = useStorage("user")
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

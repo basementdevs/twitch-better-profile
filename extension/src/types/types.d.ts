@@ -10,4 +10,18 @@ export interface TwitchUser {
   view_count: number
   email: string
   created_at: string
+
+  // Custom fields
+  pronouns?: string
+  occupation?: string
+}
+
+export interface UserSettings {
+  user_id?: int
+  username?: string
+  locale?: string
+  timezone?: string
+  occupation?: string
+  pronouns?: string
+  updated_at?: string
 }
