@@ -21,12 +21,12 @@ This project uses Rust with Actix and ScyllaDB (using the Charybdis driver) for 
 Make sure you have the following tools installed on your machine:
 
 - Back-end/API:
-  - Rust and Cargo: [Install Rust](https://www.rust-lang.org/tools/install){:target="\_blank"}
-  - ScyllaDB: [Run ScyllaDB with Docker](https://github.com/gvieira18/ws-scylla/){:target="\_blank"}
+  - Rust and Cargo: [Install Rust](https://www.rust-lang.org/tools/install)
+  - ScyllaDB: [Run ScyllaDB with Docker](https://github.com/gvieira18/ws-scylla/)
 - Front-end/Extension:
-  - pnpm: [Install pnpm](https://pnpm.io/installation){:target="\_blank"}
+  - pnpm: [Install pnpm](https://pnpm.io/installation)
 
-Also you gonna need a [Twitch Developer](https://dev.twitch.tv/){:target="\_blank"} account and an [Twitch Application](https://dev.twitch.tv/console/apps/create){:target="\_blank"}:
+Also you gonna need a [Twitch Developer](https://dev.twitch.tv/) account and an [Twitch Application](https://dev.twitch.tv/console/apps/create):
 
 ![alt text](.github/images/twitch-base.png)
 
@@ -69,7 +69,7 @@ pnpm dev:firefox
 
 This will create a server for hot-reload together with a dev extension that you can find at `./extension/build/firefox-mv2-dev`
 
-6. Access the [about:debugging](about:debugging){:target="\_blank"} tab (firefox only) and load your extension by selecting the `manifest.json` file:
+6. Access the [about:debugging](about:debugging) tab (firefox only) and load your extension by selecting the `manifest.json` file:
 
 ![Debugging Tab at Firefox](.github/images/loading-extension.png)
 
