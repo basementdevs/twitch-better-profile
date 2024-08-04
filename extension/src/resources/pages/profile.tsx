@@ -7,6 +7,7 @@ import { Storage } from "@plasmohq/storage"
 import { useStorage } from "@plasmohq/storage/dist/hook"
 
 import type { TwitchUser } from "~types/types"
+import { t } from "~utils/i18nUtils"
 
 type ProfileProps = {
   user: TwitchUser
@@ -35,11 +36,11 @@ export default function Profile({ user }: ProfileProps) {
         />
       </div>
       <Button
-          className={"w-full"}
+        className={"w-full"}
         onClick={() => {
           storage.clear()
         }}>
-        Logout
+        {t("logoutButtonText")}
       </Button>
     </div>
   )

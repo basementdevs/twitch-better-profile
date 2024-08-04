@@ -1,4 +1,5 @@
 import type { TwitchUser } from "~types/types"
+import { t } from "~utils/i18nUtils"
 
 type ProfileCardProps = {
   user: TwitchUser
@@ -28,7 +29,7 @@ export default function ProfileCard({
           <p
             className="text-gray-600 dark:text-gray-300 text-sm m-0 p-0"
             id="roleEl">
-            {occupation ?? "None"}
+            {occupation ?? t("occupationNone")}
           </p>
         </div>
         <div className="mt-2">
@@ -39,7 +40,7 @@ export default function ProfileCard({
             </span>
           </p>
           <p className="text-sm">
-            <span className="font-bold">Pronouns:</span>
+            <span className="font-bold">{t("pronounsTitle")}:</span>
             <span
               className="text-gray-600 dark:text-gray-300 ml-2"
               id="pronounsEl">
