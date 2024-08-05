@@ -60,13 +60,13 @@
     "message": "Médico"
   },
   "occupationCivilEngineer": {
-    "message": "Desenvolvedor Civil"
+    "message": "Engenheiro Civil"
   },
   "occupationFrontEndEngineer": {
     "message": "Desenvolvedor Front-end"
   },
   "occupationSreEngineer": {
-    "message": "Desenvolvedor SRE"
+    "message": "SRE"
   },
   "occupationBackEndEngineer": {
     "message": "Desenvolvedor Back-end"
