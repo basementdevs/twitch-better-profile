@@ -1,15 +1,15 @@
 pub mod app;
 
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
+#[derive(Clone, Debug, Serialize, Deserialize)]
 
-#[derive(Clone, Debug, Serialize)]
 pub struct App {
     pub name: String,
     pub version: String,
     pub url: String,
     pub port: u16,
 }
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Database {
     pub nodes: Vec<String>,
     pub username: String,
@@ -18,14 +18,14 @@ pub struct Database {
     pub keyspace: String,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Tls {
     pub enabled: bool,
     pub cert: String,
     pub key: String,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Config {
     pub app: App,
     pub tls: Tls,
