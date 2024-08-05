@@ -1,6 +1,3 @@
-
-
-
 import "~style.css"
 
 import { ThemeProvider } from "@Components/app/theme-provide"
@@ -9,10 +6,6 @@ import Profile from "@Pages/profile"
 
 import { Storage } from "@plasmohq/storage"
 import { useStorage } from "@plasmohq/storage/dist/hook"
-
-
-
-
 
 const storage = new Storage()
 
