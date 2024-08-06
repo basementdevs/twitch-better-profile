@@ -58,17 +58,11 @@
       }
     },
     "permissions": [
-      "scripting",
       "activeTab",
-      "tabs",
       "identity",
       "*://*.twitch.tv/*",
       "https://twitch-extension.danielheart.dev/*",
-      "storage",
-      "http://localhost/*",
-      "http://localhost:8000/*",
-      "webRequest",
-      "webRequestBlocking"
+      "storage"
     ]
   }
 }
