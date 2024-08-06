@@ -1,16 +1,16 @@
 {
-	"extends": "plasmo/templates/tsconfig.base",
-	"exclude": ["node_modules"],
-	"include": ["./**/*.ts", "./**/*.tsx", ".plasmo/index.d.ts"],
-	"compilerOptions": {
-		"types": ["firefox-webext-browser", "chrome", "node"],
-		"paths": {
-			"~*": ["./src/*"],
-			"@Shad/*": ["./src/resources/shad/*"],
-			"@Components/*": ["./src/resources/components/*"],
-			"@Pages/*": ["./src/resources/pages/*"],
-			"@Config/*": ["./src/config/*"]
-		},
-		"baseUrl": "."
-	}
+  "extends": "plasmo/templates/tsconfig.base",
+  "exclude": ["node_modules"],
+  "include": ["./**/*.ts", "./**/*.tsx", ".plasmo/index.d.ts"],
+  "compilerOptions": {
+    "types": ["firefox-webext-browser", "chrome", "node"],
+    "paths": {
+      "~*": ["./src/*"],
+      "@Shad/*": ["./src/resources/shad/*"],
+      "@Components/*": ["./src/resources/components/*"],
+      "@Pages/*": ["./src/resources/pages/*"],
+      "@Config/*": ["./src/config/*"]
+    },
+    "baseUrl": "."
+  }
 }

@@ -1,77 +1,77 @@
 {
-	"logoutButtonText": {
-		"message": "Sair"
-	},
-	"toggleTheme": {
-		"message": "Alternar tema"
-	},
-	"themeLight": {
-		"message": "Claro"
-	},
-	"themeDark": {
-		"message": "Escuro"
-	},
-	"themeSystem": {
-		"message": "Sistema"
-	},
-	"headerTitle": {
-		"message": "Perfil da Twitch"
-	},
-	"authenticateButtonText": {
-		"message": "Autenticar com a Twitch"
-	},
-	"heroTitle": {
-		"message": "Perfil da Twitch"
-	},
-	"heroSubtitle": {
-		"message": "Faça login com a Twitch para começar"
-	},
-	"pronounsLabel": {
-		"message": "Selecione seu pronome"
-	},
-	"occupationLabel": {
-		"message": "Selecione sua profissão"
-	},
-	"pronounsTitle": {
-		"message": "Pronomes"
-	},
-	"pronounsNone": {
-		"message": "Nenhum"
-	},
-	"pronounsHeHim": {
-		"message": "Ele/Dele"
-	},
-	"pronounsSheHer": {
-		"message": "Ela/Dela"
-	},
-	"pronounsTheyThem": {
-		"message": "Eles/Deles"
-	},
-	"occupationNone": {
-		"message": "Nenhum"
-	},
-	"occupationStudent": {
-		"message": "Estudante"
-	},
-	"occupationLawyer": {
-		"message": "Advogado"
-	},
-	"occupationDoctor": {
-		"message": "Médico"
-	},
-	"occupationCivilEngineer": {
-		"message": "Engenheiro Civil"
-	},
-	"occupationFrontEndEngineer": {
-		"message": "Desenvolvedor Front-end"
-	},
-	"occupationSreEngineer": {
-		"message": "SRE"
-	},
-	"occupationBackEndEngineer": {
-		"message": "Desenvolvedor Back-end"
-	},
-	"occupationFullstackEngineer": {
-		"message": "Desenvolvedor Full-stack"
-	}
+  "logoutButtonText": {
+    "message": "Sair"
+  },
+  "toggleTheme": {
+    "message": "Alternar tema"
+  },
+  "themeLight": {
+    "message": "Claro"
+  },
+  "themeDark": {
+    "message": "Escuro"
+  },
+  "themeSystem": {
+    "message": "Sistema"
+  },
+  "headerTitle": {
+    "message": "Perfil da Twitch"
+  },
+  "authenticateButtonText": {
+    "message": "Autenticar com a Twitch"
+  },
+  "heroTitle": {
+    "message": "Perfil da Twitch"
+  },
+  "heroSubtitle": {
+    "message": "Faça login com a Twitch para começar"
+  },
+  "pronounsLabel": {
+    "message": "Selecione seu pronome"
+  },
+  "occupationLabel": {
+    "message": "Selecione sua profissão"
+  },
+  "pronounsTitle": {
+    "message": "Pronomes"
+  },
+  "pronounsNone": {
+    "message": "Nenhum"
+  },
+  "pronounsHeHim": {
+    "message": "Ele/Dele"
+  },
+  "pronounsSheHer": {
+    "message": "Ela/Dela"
+  },
+  "pronounsTheyThem": {
+    "message": "Eles/Deles"
+  },
+  "occupationNone": {
+    "message": "Nenhum"
+  },
+  "occupationStudent": {
+    "message": "Estudante"
+  },
+  "occupationLawyer": {
+    "message": "Advogado"
+  },
+  "occupationDoctor": {
+    "message": "Médico"
+  },
+  "occupationCivilEngineer": {
+    "message": "Engenheiro Civil"
+  },
+  "occupationFrontEndEngineer": {
+    "message": "Desenvolvedor Front-end"
+  },
+  "occupationSreEngineer": {
+    "message": "SRE"
+  },
+  "occupationBackEndEngineer": {
+    "message": "Desenvolvedor Back-end"
+  },
+  "occupationFullstackEngineer": {
+    "message": "Desenvolvedor Full-stack"
+  }
 }

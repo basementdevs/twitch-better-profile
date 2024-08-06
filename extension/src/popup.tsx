@@ -10,15 +10,15 @@ import { useStorage } from "@plasmohq/storage/dist/hook";
 const storage = new Storage();
 
 function IndexPopup() {
-	const [user] = useStorage("user");
+  const [user] = useStorage("user");
 
-	return (
-		<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-			<div className="min-w-[350px]">
-				{user ? <Profile user={user} /> : <Auth />}
-			</div>
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="min-w-[350px]">
+        {user ? <Profile user={user} /> : <Auth />}
+      </div>
+    </ThemeProvider>
+  );
 }
 
 export default IndexPopup;
