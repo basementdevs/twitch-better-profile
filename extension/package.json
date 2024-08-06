@@ -8,7 +8,9 @@
     "dev": "plasmo dev",
     "build": "plasmo build",
     "dev:firefox": "plasmo dev --target=firefox-mv2",
-    "package": "plasmo package"
+    "package": "plasmo package",
+    "check": "biome check",
+    "check:fix": "biome check --write"
   },
   "dependencies": {
     "@plasmohq/messaging": "^0.6.2",

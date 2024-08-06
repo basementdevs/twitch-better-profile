@@ -1,77 +1,77 @@
-import {enhanceChatMessage} from "~scripting/components";
+import { enhanceChatMessage } from "~scripting/components";
 
 class MessageQueue {
-  messages: any[] = []
-  processing: boolean = false
+	messages: HTMLElement[] = [];
+	processing = false;
 
-  constructor() {
-    this.messages = []
-    this.processing = false
-  }
+	constructor() {
+		this.messages = [];
+		this.processing = false;
+	}
 
-  addMessage(message: any) {
-    this.messages.push(message)
+	addMessage(message: HTMLElement) {
+		this.messages.push(message);
 
-    if (!this.isProcessing()) {
-      this.processNext()
-    }
-  }
+		if (!this.isProcessing()) {
+			this.processNext();
+		}
+	}
 
-  processNextMessage() {
-    if (this.isEmpty()) {
-      return "Queue is empty"
-    }
-    return this.messages.shift()
-  }
+	processNextMessage() {
+		if (this.isEmpty()) return null;
 
-  isProcessing() {
-    return this.processing
-  }
+		return this.messages.shift();
+	}
 
-  async processNext() {
-    if (this.isProcessing()) {
-      console.log("TBC: Already processing, waiting...")
-      return
-    }
-    if (this.isEmpty()) {
-      console.log("TBC: Queue is empty")
-      this.processing = false
-      return
-    }
+	isProcessing() {
+		return this.processing;
+	}
 
-    this.processing = true
-    const item = this.processNextMessage()
-    console.log("TBC: Processing next item")
-    console.log(item)
+	async processNext() {
+		if (this.isProcessing()) {
+			console.log("TBC: Already processing, waiting...");
+			return;
+		}
+		if (this.isEmpty()) {
+			console.log("TBC: Queue is empty");
+			this.processing = false;
+			return;
+		}
 
-    // Simulate async processing
-    try {
-      // Simulate async processing
-      await this.processItem(item);
-    } catch (error) {
-      console.error("Error processing item:", error);
-    } finally {
-      this.processing = false;
-      await this.processNext();
-    }
-  }
+		this.processing = true;
+		const item = this.processNextMessage();
+		console.log("TBC: Processing next item");
+		console.log(item);
 
-  async processItem(item: HTMLElement) {
-    return new Promise((resolve, reject) => {
-      try {
-        //console.log(`Processing item: ${item}`);
-        enhanceChatMessage(item);
-        resolve(true);
-      } catch (error) {
-        reject(error);
-      }
-    })
-  }
+		// Simulate async processing
+		try {
+			// Simulate async processing
+			await this.processItem(item);
+		} catch (error) {
+			console.error("Error processing item:", error);
+		} finally {
+			this.processing = false;
+			await this.processNext();
+		}
+	}
 
-  private isEmpty() {
-    return this.messages.length === 0
-  }
+	async processItem(item: HTMLElement | null) {
+		if (!item) return;
+
+		return new Promise((resolve, reject) => {
+			try {
+				//console.log(`Processing item: ${item}`);
+				enhanceChatMessage(item);
+				resolve(true);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	}
+
+	private isEmpty() {
+		return this.messages.length === 0;
+	}
 }
 
-
-export { MessageQueue }
+export { MessageQueue };

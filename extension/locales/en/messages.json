@@ -1,77 +1,77 @@
 {
-  "logoutButtonText": {
-    "message": "Logout"
-  },
-  "toggleTheme": {
-    "message": "Toggle theme"
-  },
-  "themeLight": {
-    "message": "Light"
-  },
-  "themeDark": {
-    "message": "Dark"
-  },
-  "themeSystem": {
-    "message": "System"
-  },
-  "headerTitle": {
-    "message": "Twitch Profiler"
-  },
-  "authenticateButtonText": {
-    "message": "Authenticate with Twitch"
-  },
-  "heroTitle": {
-    "message": "Twitch Profiler"
-  },
-  "heroSubtitle": {
-    "message": "Sign in with Twitch to get started"
-  },
-  "pronounsLabel": {
-    "message": "Select your pronoun"
-  },
-  "occupationLabel": {
-    "message": "Select your occupation"
-  },
-  "pronounsTitle": {
-    "message": "Pronouns"
-  },
-  "pronounsNone": {
-    "message": "None"
-  },
-  "pronounsHeHim": {
-    "message": "He/Him"
-  },
-  "pronounsSheHer": {
-    "message": "She/Her"
-  },
-  "pronounsTheyThem": {
-    "message": "They/Them"
-  },
-  "occupationNone": {
-    "message": "None"
-  },
-  "occupationStudent": {
-    "message": "Student"
-  },
-  "occupationLawyer": {
-    "message": "Lawyer"
-  },
-  "occupationDoctor": {
-    "message": "Doctor"
-  },
-  "occupationCivilEngineer": {
-    "message": "Civil engineer"
-  },
-  "occupationFrontEndEngineer": {
-    "message": "Front-end engineer"
-  },
-  "occupationSreEngineer": {
-    "message": "SRE engineer"
-  },
-  "occupationBackEndEngineer": {
-    "message": "Back-end engineer"
-  },
-  "occupationFullstackEngineer": {
-    "message": "Full-stack engineer"
-  }
+	"logoutButtonText": {
+		"message": "Logout"
+	},
+	"toggleTheme": {
+		"message": "Toggle theme"
+	},
+	"themeLight": {
+		"message": "Light"
+	},
+	"themeDark": {
+		"message": "Dark"
+	},
+	"themeSystem": {
+		"message": "System"
+	},
+	"headerTitle": {
+		"message": "Twitch Profiler"
+	},
+	"authenticateButtonText": {
+		"message": "Authenticate with Twitch"
+	},
+	"heroTitle": {
+		"message": "Twitch Profiler"
+	},
+	"heroSubtitle": {
+		"message": "Sign in with Twitch to get started"
+	},
+	"pronounsLabel": {
+		"message": "Select your pronoun"
+	},
+	"occupationLabel": {
+		"message": "Select your occupation"
+	},
+	"pronounsTitle": {
+		"message": "Pronouns"
+	},
+	"pronounsNone": {
+		"message": "None"
+	},
+	"pronounsHeHim": {
+		"message": "He/Him"
+	},
+	"pronounsSheHer": {
+		"message": "She/Her"
+	},
+	"pronounsTheyThem": {
+		"message": "They/Them"
+	},
+	"occupationNone": {
+		"message": "None"
+	},
+	"occupationStudent": {
+		"message": "Student"
+	},
+	"occupationLawyer": {
+		"message": "Lawyer"
+	},
+	"occupationDoctor": {
+		"message": "Doctor"
+	},
+	"occupationCivilEngineer": {
+		"message": "Civil engineer"
+	},
+	"occupationFrontEndEngineer": {
+		"message": "Front-end engineer"
+	},
+	"occupationSreEngineer": {
+		"message": "SRE engineer"
+	},
+	"occupationBackEndEngineer": {
+		"message": "Back-end engineer"
+	},
+	"occupationFullstackEngineer": {
+		"message": "Full-stack engineer"
+	}
 }

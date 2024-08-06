@@ -1,5 +1,5 @@
-import "@plasmohq/messaging/background"
+import "@plasmohq/messaging/background";
 
-import { startHub } from "@plasmohq/messaging/pub-sub"
+import { startHub } from "@plasmohq/messaging/pub-sub";
 
-startHub()
+startHub();
