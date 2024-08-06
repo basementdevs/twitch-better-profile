@@ -1,4 +1,4 @@
-use actix_web::{get, HttpResponse, put, Responder, web};
+use actix_web::{get, put, web, HttpResponse, Responder};
 use charybdis::operations::{Find, Insert};
 use log::debug;
 use serde_json::json;
@@ -9,12 +9,27 @@ use crate::http::SomeError;
 use crate::models::materialized_views::settings_by_username::SettingsByUsername;
 use crate::models::settings::Settings;
 
+static AVAILABLE_PRONOUNS: &[&str] = &[
+    "n/d",
+    "he/him", 
+    "she/her", 
+    "they/them"
+];
+
 #[put("/settings")]
 pub async fn put_settings(
     data: web::Data<AppState>,
     message: Json<Settings>,
-) -> Result<impl Responder, SomeError> {
+) -> anyhow::Result<impl Responder, SomeError> {
     let settings = message.into_inner();
+
+    let pronouns = settings.pronouns.clone().unwrap();
+    if !AVAILABLE_PRONOUNS.contains(&pronouns.as_str()) {
+        return Ok(HttpResponse::UnprocessableEntity().json(json!({
+            "message": "pronoun not listed"
+        })));
+    }
+
     settings.insert().execute(&data.database).await?;
 
     Ok(HttpResponse::Ok().json(json!(settings)))
@@ -32,13 +47,16 @@ pub async fn get_settings(
         ..Default::default()
     };
 
-    let settings = settings.find_by_partition_key().execute(&data.database).await?;
+    let settings = settings
+        .find_by_partition_key()
+        .execute(&data.database)
+        .await?;
 
     let settings = settings.try_collect().await?;
     debug!("data: {:?}", settings.is_empty());
     let response = match settings.is_empty() {
         true => HttpResponse::NotFound().json(json!({})),
-        false => HttpResponse::Ok().json(json!(settings[0].clone()))
+        false => HttpResponse::Ok().json(json!(settings[0].clone())),
     };
 
     Ok(response)

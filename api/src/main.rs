@@ -1,10 +1,9 @@
 use std::fs::File;
 use std::io::BufReader;
-use std::sync::Arc;
 
-use actix_web::{App, HttpServer};
-use actix_web::web::Data;
 use actix_cors::Cors;
+use actix_web::web::Data;
+use actix_web::{App, HttpServer};
 use log::debug;
 
 use crate::config::app::AppState;
@@ -21,7 +20,7 @@ async fn main() -> std::io::Result<()> {
 
     let addr = (
         app_data.config.app.url.clone(),
-        app_data.config.app.port.clone()
+        app_data.config.app.port.clone(),
     );
     let tls_enabled = app_data.config.tls.enabled.clone();
     debug!("Web Server Online!");
@@ -51,7 +50,6 @@ async fn main() -> std::io::Result<()> {
         .with_single_cert(tls_certs, rustls::pki_types::PrivateKeyDer::Pkcs8(tls_key))
         .unwrap();
 
-
     let server = HttpServer::new(move || {
         let cors = Cors::default()
             .allow_any_origin()
@@ -62,16 +60,15 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(cors)
             .app_data(Data::new(app_data.clone()))
-            .service(actix_files::Files::new("/static", "./static")
-                .use_last_modified(true))
+            .service(actix_files::Files::new("/static", "./static").use_last_modified(true))
+            .service(http::welcome)
             .service(http::messages_controller::post_submission)
             .service(http::settings_controller::put_settings)
             .service(http::settings_controller::get_settings)
     });
 
-
     match tls_enabled {
         true => server.bind_rustls_0_23(addr, tls_config)?.run().await,
-        false => server.bind(addr)?.run().await
+        false => server.bind(addr)?.run().await,
     }
 }

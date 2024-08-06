@@ -1,10 +1,15 @@
 pub mod messages_controller;
 pub mod settings_controller;
 
-use actix_web::{HttpResponse, ResponseError};
+use actix_web::{get, HttpResponse, ResponseError};
 use charybdis::errors::CharybdisError;
 use serde_json::json;
 use thiserror::Error;
+
+#[get("/")]
+pub async fn welcome() -> anyhow::Result<String, SomeError> {
+    Ok("Welcome!".to_string())
+}
 
 #[derive(Error, Debug)]
 pub enum SomeError {
@@ -23,8 +28,8 @@ impl ResponseError for SomeError {
                 _ => HttpResponse::InternalServerError().json(json!({
                     "status": 500,
                     "message": e.to_string()
-                }))
-            }
+                })),
+            },
         }
     }
 }
