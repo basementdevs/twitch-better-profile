@@ -1,8 +1,8 @@
-import { ModeToggle } from "@Components/app/mode-toggle"
-import { H4 } from "@Shad/components/ui/typography/h4"
-import { User as UserIcon } from "lucide-react"
+import { ModeToggle } from "@Components/app/mode-toggle";
+import { H4 } from "@Shad/components/ui/typography/h4";
+import { User as UserIcon } from "lucide-react";
 
-import { t } from "~utils/i18nUtils"
+import { t } from "~utils/i18nUtils";
 
 export default function Header() {
   return (
@@ -13,5 +13,5 @@ export default function Header() {
       </div>
       <ModeToggle />
     </div>
-  )
+  );
 }

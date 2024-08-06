@@ -1,22 +1,22 @@
-import Header from "@Components/app/header"
-import ProfileCard from "@Components/settings/profile-card"
-import SettingsForm from "@Components/settings/settings-form"
-import { Button } from "@Shad/components/ui/button"
+import Header from "@Components/app/header";
+import ProfileCard from "@Components/settings/profile-card";
+import SettingsForm from "@Components/settings/settings-form";
+import { Button } from "@Shad/components/ui/button";
 
-import { Storage } from "@plasmohq/storage"
-import { useStorage } from "@plasmohq/storage/dist/hook"
+import { Storage } from "@plasmohq/storage";
+import { useStorage } from "@plasmohq/storage/dist/hook";
 
-import type { TwitchUser } from "~types/types"
-import { t } from "~utils/i18nUtils"
+import type { TwitchUser } from "~types/types";
+import { t } from "~utils/i18nUtils";
 
 type ProfileProps = {
-  user: TwitchUser
-}
+  user: TwitchUser;
+};
 
 export default function Profile({ user }: ProfileProps) {
-  const storage = new Storage()
-  const [currentPronouns] = useStorage("pronouns")
-  const [currentOccupation] = useStorage("occupation")
+  const storage = new Storage();
+  const [currentPronouns] = useStorage("pronouns");
+  const [currentOccupation] = useStorage("occupation");
 
   return (
     <div className="max-w-96">
@@ -38,10 +38,11 @@ export default function Profile({ user }: ProfileProps) {
       <Button
         className={"w-full"}
         onClick={() => {
-          storage.clear()
-        }}>
+          storage.clear();
+        }}
+      >
         {t("logoutButtonText")}
       </Button>
     </div>
-  )
+  );
 }

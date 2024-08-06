@@ -16,16 +16,16 @@ use serde::{Deserialize, Serialize};
 )]
 #[derive(Debug, Serialize, Deserialize, Default, Clone)]
 pub struct Settings {
-    pub user_id: Int,
-    pub username: Option<Text>,
-    pub locale: Option<Text>,
-    pub timezone: Option<Text>,
-    pub occupation: Option<Text>,
-    pub pronouns: Option<Text>,
-    #[serde(default = "default_updated_at")]
-    pub updated_at: Timestamp,
+  pub user_id: Int,
+  pub username: Option<Text>,
+  pub locale: Option<Text>,
+  pub timezone: Option<Text>,
+  pub occupation: Option<Text>,
+  pub pronouns: Option<Text>,
+  #[serde(default = "default_updated_at")]
+  pub updated_at: Timestamp,
 }
 
 pub fn default_updated_at() -> DateTime<Utc> {
-    Utc::now()
+  Utc::now()
 }

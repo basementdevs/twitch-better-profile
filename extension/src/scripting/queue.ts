@@ -1,48 +1,47 @@
-import {enhanceChatMessage} from "~scripting/components";
+import { enhanceChatMessage } from "~scripting/components";
 
 class MessageQueue {
-  messages: any[] = []
-  processing: boolean = false
+  messages: HTMLElement[] = [];
+  processing = false;
 
   constructor() {
-    this.messages = []
-    this.processing = false
+    this.messages = [];
+    this.processing = false;
   }
 
-  addMessage(message: any) {
-    this.messages.push(message)
+  addMessage(message: HTMLElement) {
+    this.messages.push(message);
 
     if (!this.isProcessing()) {
-      this.processNext()
+      this.processNext();
     }
   }
 
   processNextMessage() {
-    if (this.isEmpty()) {
-      return "Queue is empty"
-    }
-    return this.messages.shift()
+    if (this.isEmpty()) return null;
+
+    return this.messages.shift();
   }
 
   isProcessing() {
-    return this.processing
+    return this.processing;
   }
 
   async processNext() {
     if (this.isProcessing()) {
-      console.log("TBC: Already processing, waiting...")
-      return
+      console.log("TBC: Already processing, waiting...");
+      return;
     }
     if (this.isEmpty()) {
-      console.log("TBC: Queue is empty")
-      this.processing = false
-      return
+      console.log("TBC: Queue is empty");
+      this.processing = false;
+      return;
     }
 
-    this.processing = true
-    const item = this.processNextMessage()
-    console.log("TBC: Processing next item")
-    console.log(item)
+    this.processing = true;
+    const item = this.processNextMessage();
+    console.log("TBC: Processing next item");
+    console.log(item);
 
     // Simulate async processing
     try {
@@ -56,7 +55,9 @@ class MessageQueue {
     }
   }
 
-  async processItem(item: HTMLElement) {
+  async processItem(item: HTMLElement | null) {
+    if (!item) return;
+
     return new Promise((resolve, reject) => {
       try {
         //console.log(`Processing item: ${item}`);
@@ -65,13 +66,12 @@ class MessageQueue {
       } catch (error) {
         reject(error);
       }
-    })
+    });
   }
 
   private isEmpty() {
-    return this.messages.length === 0
+    return this.messages.length === 0;
   }
 }
 
-
-export { MessageQueue }
+export { MessageQueue };

@@ -1,17 +1,17 @@
-import { Button } from "@Shad/components/ui/button"
-import { LucideTwitch } from "lucide-react"
+import { Button } from "@Shad/components/ui/button";
+import { LucideTwitch } from "lucide-react";
 
-import { sendToBackground } from "@plasmohq/messaging"
+import { sendToBackground } from "@plasmohq/messaging";
 
-import { t } from "~utils/i18nUtils"
+import { t } from "~utils/i18nUtils";
 
 export default function AuthenticateButton() {
   const authenticate = async () => {
-    console.log("authenticate")
+    console.log("authenticate");
     await sendToBackground({
-      name: "oauth"
-    })
-  }
+      name: "oauth",
+    });
+  };
 
   return (
     <div className="flex flex-row justify-center w-full">
@@ -20,5 +20,5 @@ export default function AuthenticateButton() {
         <p style={{ paddingLeft: 10 }}>{t("authenticateButtonText")}</p>
       </Button>
     </div>
-  )
+  );
 }

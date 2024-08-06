@@ -1,17 +1,17 @@
-import { useTheme } from "@Components/app/theme-provide"
-import { Button } from "@Shad/components/ui/button"
+import { useTheme } from "@Components/app/theme-provide";
+import { Button } from "@Shad/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@Shad/components/ui/dropdown-menu"
-import { Moon, Sun } from "lucide-react"
+  DropdownMenuTrigger,
+} from "@Shad/components/ui/dropdown-menu";
+import { Moon, Sun } from "lucide-react";
 
-import { t } from "~utils/i18nUtils"
+import { t } from "~utils/i18nUtils";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme()
+  const { setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -34,5 +34,5 @@ export function ModeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

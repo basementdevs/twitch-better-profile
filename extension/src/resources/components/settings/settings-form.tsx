@@ -1,24 +1,24 @@
-import { Label } from "@Shad/components/ui/label"
-import { useRef, type MutableRefObject } from "react"
+import { Label } from "@Shad/components/ui/label";
+import { type MutableRefObject, useRef } from "react";
 
-import { Storage } from "@plasmohq/storage"
+import { Storage } from "@plasmohq/storage";
 
-import type { TwitchUser } from "~types/types"
-import { t } from "~utils/i18nUtils"
+import type { TwitchUser } from "~types/types";
+import { t } from "~utils/i18nUtils";
 
 interface SettingsFormProps {
-  user?: TwitchUser
-  pronouns?: string
-  occupation?: string
+  user?: TwitchUser;
+  pronouns?: string;
+  occupation?: string;
 }
 
 export default function SettingsForm({
   user,
   pronouns,
-  occupation
+  occupation,
 }: SettingsFormProps) {
-  const pronounsListEl: MutableRefObject<HTMLSelectElement> = useRef(null)
-  const occupationListEl: MutableRefObject<HTMLSelectElement> = useRef(null)
+  const pronounsListEl: MutableRefObject<HTMLSelectElement> = useRef(null);
+  const occupationListEl: MutableRefObject<HTMLSelectElement> = useRef(null);
 
   const occupations = [
     "occupationNone",
@@ -29,36 +29,36 @@ export default function SettingsForm({
     "occupationFrontEndEngineer",
     "occupationSreEngineer",
     "occupationBackEndEngineer",
-    "occupationFullstackEngineer"
-  ]
+    "occupationFullstackEngineer",
+  ];
 
   const updateSettings = async () => {
-    const storage = new Storage()
-    console.log("Updating pronouns")
-    const selectedPronoun = pronounsListEl.current.value
-    const selectedOccupation = occupationListEl.current.value
+    const storage = new Storage();
+    console.log("Updating pronouns");
+    const selectedPronoun = pronounsListEl.current.value;
+    const selectedOccupation = occupationListEl.current.value;
     const response = await fetch(
-      process.env.PLASMO_PUBLIC_API_URL + "/settings",
+      `${process.env.PLASMO_PUBLIC_API_URL}/settings`,
       {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           pronouns: selectedPronoun,
           locale: "en-US",
           occupation: selectedOccupation,
           user_id: user.id,
-          username: user.display_name
-        })
-      }
-    )
+          username: user.display_name,
+        }),
+      },
+    );
 
     if (response.ok) {
-      await storage.set("pronouns", selectedPronoun)
-      await storage.set("occupation", selectedOccupation)
+      await storage.set("pronouns", selectedPronoun);
+      await storage.set("occupation", selectedOccupation);
     }
-  }
+  };
 
   return (
     <form className="p-4 border rounded-lg">
@@ -70,7 +70,8 @@ export default function SettingsForm({
             id="pronouns"
             onChange={updateSettings}
             value={pronouns}
-            className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300">
+            className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300"
+          >
             <option value="n/d">{t("pronounsNone")}</option>
             <option value={"He/Him"}>{t("pronounsHeHim")}</option>
             <option value={"She/Her"}>{t("pronounsSheHer")}</option>
@@ -85,7 +86,8 @@ export default function SettingsForm({
             id="pronouns"
             onChange={updateSettings}
             value={occupation}
-            className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300">
+            className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300"
+          >
             {occupations.map((occupationKey) => (
               <option key={occupationKey} value={t(occupationKey)}>
                 {t(occupationKey)}
@@ -95,5 +97,5 @@ export default function SettingsForm({
         </div>
       </div>
     </form>
-  )
+  );
 }
