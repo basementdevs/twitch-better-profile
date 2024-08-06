@@ -10,6 +10,7 @@ class MessageQueue {
   }
 
   addMessage(message: HTMLElement) {
+    console.log(message);
     this.messages.push(message);
 
     if (!this.isProcessing()) {

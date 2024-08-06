@@ -4,15 +4,16 @@ class ChatMutationObserver {
   private observer: MutationObserver;
 
   private queue: MessageQueue;
-  private messagesBatch: Node[];
-  private debounceTimer: number;
+  private messagesBatch: HTMLElement[];
+  private debounceMessageTimer: number;
+  private debounceProcessedNodesTimer: number;
   private processedNodes: Set<HTMLElement> = new Set();
   private readonly debounceInterval: number;
 
   constructor() {
     this.queue = new MessageQueue();
     this.messagesBatch = [];
-    this.debounceInterval = 5;
+    this.debounceInterval = 5; // 5 milliseconds
 
     this.processMutation = this.processMutation.bind(this);
   }
@@ -22,23 +23,25 @@ class ChatMutationObserver {
     this.observer.observe(node, config);
   }
 
+  /** Stops  */
   private debounceProcessedNodes() {
-    if (this.debounceTimer) {
-      clearTimeout(this.debounceTimer);
+    if (this.debounceProcessedNodesTimer) {
+      clearTimeout(this.debounceProcessedNodesTimer);
     }
 
-    this.debounceTimer = window.setTimeout(() => {
+    this.debounceProcessedNodesTimer = window.setTimeout(() => {
       this.processedNodes.clear();
-    }, this.debounceInterval * 10);
+    }, this.debounceInterval * 20);
   }
 
   private debounceProcessBatch() {
-    if (this.debounceTimer) {
-      clearTimeout(this.debounceTimer);
+    if (this.debounceMessageTimer) {
+      clearTimeout(this.debounceMessageTimer);
     }
 
-    this.debounceTimer = window.setTimeout(() => {
+    this.debounceMessageTimer = window.setTimeout(() => {
       this.processBatch();
+      this.debounceProcessedNodes();
     }, this.debounceInterval); // Adjust the delay as needed
   }
 
@@ -47,7 +50,7 @@ class ChatMutationObserver {
       return;
     }
 
-    this.messagesBatch.forEach(this.queue.addMessage);
+    this.messagesBatch.forEach((message) => this.queue.addMessage(message));
     this.messagesBatch = [];
   }
 
