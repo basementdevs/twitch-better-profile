@@ -1,9 +1,9 @@
-use std::fmt;
 use charybdis::macros::charybdis_model;
 use charybdis::types::{Int, Text, Timestamp, Uuid};
 use chrono::{DateTime, TimeZone, Utc};
-use serde::{de, Deserialize, Deserializer, Serialize};
 use serde::de::Visitor;
+use serde::{de, Deserialize, Deserializer, Serialize};
+use std::fmt;
 
 #[charybdis_model(
     table_name = messages,
@@ -15,50 +15,52 @@ use serde::de::Visitor;
 )]
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Message {
-    pub channel_id: Int,
-    pub user_id: Int,
-    pub username: Text,
-    pub message_id: Uuid,
-    pub content: Text,
-    pub color: Text,
-    #[serde(deserialize_with = "deserialize_epoch")]
-    pub sent_at: Timestamp,
+  pub channel_id: Int,
+  pub user_id: Int,
+  pub username: Text,
+  pub message_id: Uuid,
+  pub content: Text,
+  pub color: Text,
+  #[serde(deserialize_with = "deserialize_epoch")]
+  pub sent_at: Timestamp,
 }
 
 // Custom deserializer function
 fn deserialize_epoch<'de, D>(deserializer: D) -> Result<DateTime<Utc>, D::Error>
 where
-    D: Deserializer<'de>,
+  D: Deserializer<'de>,
 {
-    struct EpochVisitor;
+  struct EpochVisitor;
 
-    impl<'de> Visitor<'de> for EpochVisitor {
-        type Value = DateTime<Utc>;
+  impl<'de> Visitor<'de> for EpochVisitor {
+    type Value = DateTime<Utc>;
 
-        fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-            formatter.write_str("an integer timestamp")
-        }
-
-        fn visit_i64<E>(self, value: i64) -> Result<DateTime<Utc>, E>
-        where
-            E: de::Error,
-        {
-            let value = value / 1000;
-            Utc.timestamp_opt(value, 0)
-                .single()
-                .ok_or_else(|| de::Error::custom("invalid timestamp"))
-        }
-
-        fn visit_u64<E>(self, value: u64) -> Result<DateTime<Utc>, E>
-        where
-            E: de::Error,
-        {
-            let value = value / 1000;
-            Utc.timestamp_opt(value as i64, 0)
-                .single()
-                .ok_or_else(|| de::Error::custom("invalid timestamp"))
-        }
+    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+      formatter.write_str("an integer timestamp")
     }
 
-    deserializer.deserialize_any(EpochVisitor)
+    fn visit_i64<E>(self, value: i64) -> Result<DateTime<Utc>, E>
+    where
+      E: de::Error,
+    {
+      let value = value / 1000;
+      Utc
+        .timestamp_opt(value, 0)
+        .single()
+        .ok_or_else(|| de::Error::custom("invalid timestamp"))
+    }
+
+    fn visit_u64<E>(self, value: u64) -> Result<DateTime<Utc>, E>
+    where
+      E: de::Error,
+    {
+      let value = value / 1000;
+      Utc
+        .timestamp_opt(value as i64, 0)
+        .single()
+        .ok_or_else(|| de::Error::custom("invalid timestamp"))
+    }
+  }
+
+  deserializer.deserialize_any(EpochVisitor)
 }

@@ -1,119 +1,119 @@
 #[cfg(test)]
 mod tests {
-    use std::sync::Arc;
+  use std::sync::Arc;
 
-    use actix_web::web::Data;
-    use actix_web::App;
-    use charybdis::operations::{Delete, Insert};
-    use twitch_extension_api::config::app::AppState;
-    use twitch_extension_api::http::settings_controller::{get_settings, put_settings};
-    use twitch_extension_api::models::settings::Settings;
+  use actix_web::web::Data;
+  use actix_web::App;
+  use charybdis::operations::{Delete, Insert};
+  use twitch_extension_api::config::app::AppState;
+  use twitch_extension_api::http::settings_controller::{get_settings, put_settings};
+  use twitch_extension_api::models::settings::Settings;
 
-    #[actix_web::test]
-    async fn test_get_settings() {
-        // Arrange
-        let app_data = AppState::new().await;
-        let database = Arc::clone(&app_data.database);
+  #[actix_web::test]
+  async fn test_get_settings() {
+    // Arrange
+    let app_data = AppState::new().await;
+    let database = Arc::clone(&app_data.database);
 
-        let server = actix_test::start(move || {
-            App::new()
-                .app_data(Data::new(app_data.clone()))
-                .service(get_settings)
-        });
+    let server = actix_test::start(move || {
+      App::new()
+        .app_data(Data::new(app_data.clone()))
+        .service(get_settings)
+    });
 
-        let settings = Settings {
-            user_id: 123,
-            username: Some("danielhe4rt".to_string()),
-            ..Default::default()
-        };
+    let settings = Settings {
+      user_id: 123,
+      username: Some("danielhe4rt".to_string()),
+      ..Default::default()
+    };
 
-        settings.insert().execute(&database).await.unwrap();
+    settings.insert().execute(&database).await.unwrap();
 
-        // Act
-        let uri = format!("/settings/{}", settings.username.clone().unwrap());
-        let req = server.get(uri);
-        let mut res = req.send().await.unwrap();
-        let parsed_response: Settings = res.json().await.unwrap();
+    // Act
+    let uri = format!("/settings/{}", settings.username.clone().unwrap());
+    let req = server.get(uri);
+    let mut res = req.send().await.unwrap();
+    let parsed_response: Settings = res.json().await.unwrap();
 
-        // Assert
+    // Assert
 
-        assert_eq!(res.status().as_u16(), 200);
-        assert_eq!(parsed_response.username, settings.username);
+    assert_eq!(res.status().as_u16(), 200);
+    assert_eq!(parsed_response.username, settings.username);
 
-        settings.delete().execute(&database).await.unwrap();
-    }
+    settings.delete().execute(&database).await.unwrap();
+  }
 
-    #[actix_web::test]
-    async fn test_put_settings() {
-        // Arrange
-        let app_data = AppState::new().await;
-        let database = Arc::clone(&app_data.database);
+  #[actix_web::test]
+  async fn test_put_settings() {
+    // Arrange
+    let app_data = AppState::new().await;
+    let database = Arc::clone(&app_data.database);
 
-        let server = actix_test::start(move || {
-            App::new()
-                .app_data(Data::new(app_data.clone()))
-                .service(put_settings)
-        });
+    let server = actix_test::start(move || {
+      App::new()
+        .app_data(Data::new(app_data.clone()))
+        .service(put_settings)
+    });
 
-        let mut settings = Settings {
-            user_id: 123,
-            username: Some("danielhe4rt".to_string()),
-            pronouns: Some("she/her".to_string()),
-            ..Default::default()
-        };
-        settings.insert().execute(&database).await.unwrap();
+    let mut settings = Settings {
+      user_id: 123,
+      username: Some("danielhe4rt".to_string()),
+      pronouns: Some("she/her".to_string()),
+      ..Default::default()
+    };
+    settings.insert().execute(&database).await.unwrap();
 
-        settings.pronouns = Some("he/him".to_string());
+    settings.pronouns = Some("he/him".to_string());
 
-        // Act
-        let uri = format!("/settings");
-        let req = server.put(uri);
+    // Act
+    let uri = "/settings".to_string();
+    let req = server.put(uri);
 
-        let mut res = req.send_json(&settings).await.unwrap();
-        let parsed_response: Settings = res.json().await.unwrap();
+    let mut res = req.send_json(&settings).await.unwrap();
+    let parsed_response: Settings = res.json().await.unwrap();
 
-        // Assert
+    // Assert
 
-        assert_eq!(res.status().as_u16(), 200);  
-        
-        assert_eq!(parsed_response.username, settings.username);
-        assert_eq!(parsed_response.pronouns, settings.pronouns);
+    assert_eq!(res.status().as_u16(), 200);
 
-        settings.delete().execute(&database).await.unwrap();
-    }
+    assert_eq!(parsed_response.username, settings.username);
+    assert_eq!(parsed_response.pronouns, settings.pronouns);
 
-    #[actix_web::test]
-    async fn test_should_put_settings_in_right_format() {
-        // Arrange
-        let app_data = AppState::new().await;
-        let database = Arc::clone(&app_data.database);
+    settings.delete().execute(&database).await.unwrap();
+  }
 
-        let server = actix_test::start(move || {
-            App::new()
-                .app_data(Data::new(app_data.clone()))
-                .service(put_settings)
-        });
+  #[actix_web::test]
+  async fn test_should_put_settings_in_right_format() {
+    // Arrange
+    let app_data = AppState::new().await;
+    let database = Arc::clone(&app_data.database);
 
-        let mut settings = Settings {
-            user_id: 123,
-            username: Some("danielhe4rt".to_string()),
-            pronouns: Some("she/her".to_string()),
-            ..Default::default()
-        };
-        settings.insert().execute(&database).await.unwrap();
+    let server = actix_test::start(move || {
+      App::new()
+        .app_data(Data::new(app_data.clone()))
+        .service(put_settings)
+    });
 
-        settings.pronouns = Some("he/hims".to_string());
+    let mut settings = Settings {
+      user_id: 123,
+      username: Some("danielhe4rt".to_string()),
+      pronouns: Some("she/her".to_string()),
+      ..Default::default()
+    };
+    settings.insert().execute(&database).await.unwrap();
 
-        // Act
-        let uri = format!("/settings");
-        let req = server.put(uri);
+    settings.pronouns = Some("he/hims".to_string());
 
-        let res = req.send_json(&settings).await.unwrap();
+    // Act
+    let uri = "/settings".to_string();
+    let req = server.put(uri);
 
-        // Assert
+    let res = req.send_json(&settings).await.unwrap();
 
-        assert_eq!(res.status().as_u16(), 422);
+    // Assert
 
-        settings.delete().execute(&database).await.unwrap();
-    }
+    assert_eq!(res.status().as_u16(), 422);
+
+    settings.delete().execute(&database).await.unwrap();
+  }
 }

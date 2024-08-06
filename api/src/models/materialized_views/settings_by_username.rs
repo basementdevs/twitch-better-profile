@@ -13,11 +13,11 @@ use serde::{Deserialize, Serialize};
 )]
 #[derive(Debug, Serialize, Deserialize, Default, Clone)]
 pub struct SettingsByUsername {
-    pub user_id: Option<Int>,
-    pub username: Text,
-    pub locale: Option<Text>,
-    pub timezone: Option<Text>,
-    pub occupation: Option<Text>,
-    pub pronouns: Option<Text>,
-    pub updated_at: Timestamp,
+  pub user_id: Option<Int>,
+  pub username: Text,
+  pub locale: Option<Text>,
+  pub timezone: Option<Text>,
+  pub occupation: Option<Text>,
+  pub pronouns: Option<Text>,
+  pub updated_at: Timestamp,
 }
