@@ -23,7 +23,7 @@ pub async fn put_settings(
 ) -> anyhow::Result<impl Responder, SomeError> {
     let settings = message.into_inner();
 
-    let pronouns = settings.pronouns.clone().unwrap();
+    let pronouns = settings.pronouns.clone().unwrap().to_lowercase();
     if !AVAILABLE_PRONOUNS.contains(&pronouns.as_str()) {
         return Ok(HttpResponse::UnprocessableEntity().json(json!({
             "message": "pronoun not listed"
