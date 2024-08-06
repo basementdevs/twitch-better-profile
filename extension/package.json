@@ -50,8 +50,8 @@
   "manifest": {
     "browser_specific_settings": {
       "gecko": {
-        "id": "firefox@betterttc.dev",
-        "strict_min_version": "42.0"
+        "id": "{29688c78-7d19-4122-8315-bbb81ad15cb4}",
+        "strict_min_version": "109.0"
       }
     },
 

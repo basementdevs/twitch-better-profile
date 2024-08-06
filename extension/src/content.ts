@@ -1,6 +1,7 @@
 // NOTE: [daniel-boll] - This appear to be necessary, I'll check this later with @danielhe4rt
 
 import type { PlasmoCSConfig } from "plasmo"
+import {t} from "~utils/i18nUtils";
 
 {
 }
@@ -48,8 +49,6 @@ let mutation = new MutationObserver((mutations) => {
   if (mutations[0].previousSibling.localName === "span") {
     return
   }
-
-  console.log(mutations)
   let messageEl = null
   for (let mutation of mutations) {
     let isChildList = mutation.type === "childList"
@@ -81,8 +80,6 @@ let mutation = new MutationObserver((mutations) => {
   let badgesEl = messageEl.querySelector(".chat-line__username-container")
     .childNodes[0]
 
-  console.log(badgesEl)
-
   if (!usernameEl) {
     return
   }
@@ -98,13 +95,12 @@ let mutation = new MutationObserver((mutations) => {
       }
 
       let res = await response.json()
-      console.log(res)
-
       const child = usernameEl.firstChild
 
-      const pronouns = res.pronouns
+      let pronouns = res.pronouns.replace("/", "")
+      let i18nPronouns = t("pronouns" + pronouns)
       const pronounsElement = document.createElement("span")
-      pronounsElement.textContent = `(${pronouns})`
+      pronounsElement.textContent = `(${i18nPronouns})`
       pronounsElement.style.color = "gray"
       pronounsElement.style.marginLeft = "4px"
       if (child) {
