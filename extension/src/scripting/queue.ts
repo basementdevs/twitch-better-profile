@@ -1,6 +1,6 @@
-import { enhanceChatMessage } from "~scripting/components";
+import { enhanceChatMessage } from "@Scripting/components";
 
-class MessageQueue {
+export default class MessageQueue {
   messages: HTMLElement[] = [];
   processing = false;
 
@@ -10,7 +10,6 @@ class MessageQueue {
   }
 
   addMessage(message: HTMLElement) {
-    console.log(message);
     this.messages.push(message);
 
     if (!this.isProcessing()) {
@@ -30,19 +29,18 @@ class MessageQueue {
 
   async processNext() {
     if (this.isProcessing()) {
-      console.log("TBC: Already processing, waiting...");
+      console.log("TBP: Already processing, waiting...");
       return;
     }
     if (this.isEmpty()) {
-      console.log("TBC: Queue is empty");
+      console.log("TBP: Queue is empty");
       this.processing = false;
       return;
     }
 
     this.processing = true;
     const item = this.processNextMessage();
-    console.log("TBC: Processing next item");
-    console.log(item);
+    console.log("TBP: Processing next message...");
 
     // Simulate async processing
     try {
@@ -75,4 +73,3 @@ class MessageQueue {
   }
 }
 
-export { MessageQueue };

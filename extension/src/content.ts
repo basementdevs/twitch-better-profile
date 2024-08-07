@@ -1,6 +1,6 @@
 import type { PlasmoCSConfig } from "plasmo";
 
-import { appLoader } from "~scripting";
+import Kernel from "@Scripting/index";
 
 export const config: PlasmoCSConfig = {
   matches: [
@@ -19,4 +19,4 @@ export const config: PlasmoCSConfig = {
 
 // @ts-ignore
 
-appLoader();
+new Kernel().init();
