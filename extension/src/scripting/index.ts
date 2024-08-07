@@ -1,25 +1,65 @@
-import { ChatMutationObserver } from "./observer";
+import ChatMutationObserver from "@Scripting/observer";
+import PageWatcher, {
+  PageWatcherState,
+} from "@Scripting/watchers/page-watcher";
 
 const CHAT_LIST = ".chat-list--default,.chat-list--other,.chat-list";
 
-const appLoader = () => {
-  console.log("TBP: Loading Twitch Better Profile...");
+export default class Kernel {
+  // Core components
+  private observer: ChatMutationObserver;
+  private pageWatcher: PageWatcher;
 
-  const chatElements = document.querySelector(CHAT_LIST);
-  if (!chatElements) {
-    return setTimeout(appLoader, 50);
+  constructor() {
+    this.observer = new ChatMutationObserver();
+    this.pageWatcher = new PageWatcher();
+    this.pageWatcher.init();
   }
 
-  const chat = chatElements as Node;
-  console.log(chat);
-  console.log("TBP: Loaded! Starting to listen to new messages...");
+  init = () => {
+    setInterval(() => {
+      if (this.pageWatcher.matches() && !this.pageWatcher.observerRunning) {
+        console.log("TBP: PageWatcher matched, starting to listen to Twitch DOM...");
+        this.listenToTwitchDOM();
+      } else if (!this.pageWatcher.matches() && this.pageWatcher.observerRunning) {
+        console.log("TBP: PageWatcher didn't match, stopping observer...");
+        this.stop();
+      } else if (this.pageWatcher.refresh()) {
+        this.stop();
+        this.listenToTwitchDOM();
+      } else if (!this.pageWatcher.matches() && !this.pageWatcher.observerRunning) {
+        //console.log("TBP: Not on a watchable page...");
+      } else {
+        //console.log("TBP: Waiting...");
+      }
+    }, 25);
+  };
 
-  const observer = new ChatMutationObserver();
-  observer.start(chat, {
-    childList: true,
-    subtree: true,
-    characterData: true,
-  });
-};
+  private listenToTwitchDOM() {
+    console.log("TBP: Loading Twitch Better Profile...");
 
-export { appLoader };
+    const chatElements = document.querySelector(CHAT_LIST);
+    if (!chatElements) {
+      return setTimeout(this.init, 50);
+    }
+
+    const chat = chatElements as Node;
+    console.log("TBP: Loaded! Starting to listen to new messages...");
+
+    this.observer.start(chat, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+
+    this.pageWatcher.observerRunning = true;
+    this.pageWatcher.pageState = PageWatcherState.MATCHED;
+
+  }
+
+  stop = () => {
+    this.pageWatcher.observerRunning = false;
+    this.observer.stop();
+  };
+}
+

@@ -9,7 +9,8 @@
       "@Shad/*": ["./src/resources/shad/*"],
       "@Components/*": ["./src/resources/components/*"],
       "@Pages/*": ["./src/resources/pages/*"],
-      "@Config/*": ["./src/config/*"]
+      "@Config/*": ["./src/config/*"],
+      "@Scripting/*": ["./src/scripting/*"],
     },
     "baseUrl": "."
   }

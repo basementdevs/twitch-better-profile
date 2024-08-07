@@ -3,7 +3,6 @@ import { t } from "~utils/i18nUtils";
 const API_URL: string = process.env.PLASMO_PUBLIC_API_URL;
 
 const enhanceChatMessage = async (messageEl: HTMLElement) => {
-  console.log(messageEl.textContent);
   const usernameEl = messageEl.querySelector(".chat-line__username");
   let badgesEl = messageEl.querySelector(".chat-line__username-container");
 
@@ -25,7 +24,6 @@ const enhanceChatMessage = async (messageEl: HTMLElement) => {
   }
 
   const res = await req.json();
-
   const child = usernameEl.firstChild;
 
   const pronouns = res.pronouns.replace("/", "");

@@ -1,6 +1,6 @@
-import { MessageQueue } from "~scripting/queue";
+import MessageQueue from "~scripting/queue";
 
-class ChatMutationObserver {
+export default class ChatMutationObserver {
   private observer: MutationObserver;
 
   private queue: MessageQueue;
@@ -21,6 +21,10 @@ class ChatMutationObserver {
   public start(node: Node, config: MutationObserverInit) {
     this.observer = new MutationObserver(this.processMutation);
     this.observer.observe(node, config);
+  }
+
+  public stop() {
+    this.observer.disconnect();
   }
 
   /** Stops  */
@@ -89,5 +93,3 @@ class ChatMutationObserver {
     this.debounceProcessBatch();
   }
 }
-
-export { ChatMutationObserver };
