@@ -50,7 +50,9 @@ class ChatMutationObserver {
       return;
     }
 
-    this.messagesBatch.forEach((message) => this.queue.addMessage(message));
+    for (const message of this.messagesBatch) {
+      this.queue.addMessage(message);
+    }
     this.messagesBatch = [];
   }
 
