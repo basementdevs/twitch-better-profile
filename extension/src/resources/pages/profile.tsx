@@ -24,7 +24,7 @@ export default function Profile({ user }: ProfileProps) {
 
   const tabData = [
     {
-      name: "Settings",
+      name: t("profileSettings"),
       value: "settings",
       content: (
         <>
@@ -42,7 +42,7 @@ export default function Profile({ user }: ProfileProps) {
       ),
     },
     {
-      name: "About",
+      name: t("aboutTitle"),
       value: "about",
       content: <AboutCard />,
     },
