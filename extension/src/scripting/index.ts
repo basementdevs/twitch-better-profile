@@ -1,8 +1,8 @@
+import styleText from "data-text:../style.css";
 import ChatMutationObserver from "@Scripting/observer";
 import PageWatcher, {
   PageWatcherState,
 } from "@Scripting/watchers/page-watcher";
-import styleText from "data-text:../style.css";
 
 const CHAT_LIST = ".chat-list--default,.chat-list--other,.chat-list";
 

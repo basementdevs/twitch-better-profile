@@ -72,4 +72,3 @@ export default class MessageQueue {
     return this.messages.length === 0;
   }
 }
-
