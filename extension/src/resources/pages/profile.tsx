@@ -49,7 +49,7 @@ export default function Profile({ user }: ProfileProps) {
   ];
 
   return (
-    <div className="max-w-96">
+    <div className="flex flex-col max-w-96 p-3 gap-3">
       <Header />
       <ProfileCard
         user={user}
@@ -57,6 +57,11 @@ export default function Profile({ user }: ProfileProps) {
         occupation={currentOccupation}
       />
       <Tabs tabData={tabData} />
+      <SettingsForm
+        user={user}
+        pronouns={currentPronouns}
+        occupation={currentOccupation}
+      />
       <Button
         className={"w-full"}
         onClick={() => {
