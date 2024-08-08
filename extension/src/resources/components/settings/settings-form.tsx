@@ -51,7 +51,7 @@ export default function SettingsForm({
           user_id: user.id,
           username: user.display_name,
         }),
-      }
+      },
     );
 
     if (response.ok) {
@@ -72,7 +72,7 @@ export default function SettingsForm({
             value={pronouns}
             className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300"
           >
-            <option value="n/d">{t("pronounsNone")}</option>
+            <option value={"n/d"}>{t("pronounsNone")}</option>
             <option value={"He/Him"}>{t("pronounsHeHim")}</option>
             <option value={"She/Her"}>{t("pronounsSheHer")}</option>
             <option value={"They/Them"}>{t("pronounsTheyThem")}</option>

@@ -47,7 +47,9 @@ export default function ProfileCard({
               className="text-gray-600 dark:text-gray-300 ml-2"
               id="pronounsEl"
             >
-              {pronouns}
+              {pronouns
+                ? t(`pronouns${pronouns.replace("/", "")}`)
+                : t("pronounsNone")}
             </span>
           </p>
         </div>

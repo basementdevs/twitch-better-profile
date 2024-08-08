@@ -11,7 +11,7 @@
       "@Pages/*": ["./src/resources/pages/*"],
       "@Config/*": ["./src/config/*"],
       "@Scripting/*": ["./src/scripting/*"],
-      "@Root/*": ["./*"],
+      "@Root/*": ["./*"]
     },
     "baseUrl": "."
   }
