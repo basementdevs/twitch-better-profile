@@ -7,7 +7,6 @@ type ProfileCardProps = {
   occupation?: string;
 };
 
-
 export default function ProfileCard({
   user,
   pronouns,
@@ -48,11 +47,9 @@ export default function ProfileCard({
               className="text-gray-600 dark:text-gray-300 ml-2"
               id="pronounsEl"
             >
-              {
-                pronouns
-                  ? t("pronouns" + pronouns.replace("/", ""))
-                  : t("pronounsNone")
-              }
+              {pronouns
+                ? t(`pronouns${pronouns.replace("/", "")}`)
+                : t("pronounsNone")}
             </span>
           </p>
         </div>

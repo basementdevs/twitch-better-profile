@@ -5,9 +5,9 @@ const watchablePages = [
 ];
 
 export enum PageWatcherState {
-  MATCHED,
-  REFRESHED,
-  STANDBY,
+  MATCHED = 0,
+  REFRESHED = 1,
+  STANDBY = 2,
 }
 
 export default class PageWatcher {

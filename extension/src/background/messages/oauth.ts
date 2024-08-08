@@ -3,7 +3,7 @@ import browser from "webextension-polyfill";
 import type { PlasmoMessaging } from "@plasmohq/messaging";
 import { Storage } from "@plasmohq/storage";
 
-import type { TwitchUser, UserSettings, ColorChatUser } from "~types/types";
+import type { ColorChatUser, TwitchUser, UserSettings } from "~types/types";
 
 const CLIENT_ID = process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID;
 const TWITCH_API_URL = process.env.PLASMO_PUBLIC_TWITCH_API_URL;
@@ -37,7 +37,7 @@ const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
 };
 
 async function getUserDataByUsername(
-  username: string
+  username: string,
 ): Promise<UserSettings | null> {
   const settings = await fetch(`${API_URL}/settings/${username}`, {
     headers: {
@@ -53,7 +53,7 @@ async function getUserDataByUsername(
 
 async function getUserChatColor(
   accessToken: string,
-  userId: number
+  userId: number,
 ): Promise<string | null> {
   const usernameColorRequest = await fetch(
     `${TWITCH_API_URL}/chat/color?user_id=${userId}`,
@@ -62,7 +62,7 @@ async function getUserChatColor(
         "Client-ID": CLIENT_ID,
         Authorization: `Bearer ${accessToken}`,
       },
-    }
+    },
   );
 
   if (usernameColorRequest.ok) {
@@ -73,7 +73,7 @@ async function getUserChatColor(
 }
 
 async function getTwitchUserByAccessToken(
-  accessToken: string
+  accessToken: string,
 ): Promise<TwitchUser> {
   const authenticatedUser = await fetch(`${TWITCH_API_URL}/users`, {
     headers: {

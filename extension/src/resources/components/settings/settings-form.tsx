@@ -51,7 +51,7 @@ export default function SettingsForm({
           user_id: user.id,
           username: user.display_name,
         }),
-      }
+      },
     );
 
     if (response.ok) {

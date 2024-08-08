@@ -20,7 +20,7 @@ export default function AboutCard() {
           {t("aboutSubdescription")}
         </p>
       </div>
-        { /* TODO: implement a robust changelog system (check issue #36) */}
+      {/* TODO: implement a robust changelog system (check issue #36) */}
       {/*<div className="space-y-1">*/}
       {/*  <h1 className="font-semibold">{t("aboutChangelog")}</h1>*/}
       {/*  <a*/}
