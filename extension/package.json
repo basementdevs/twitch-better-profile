@@ -56,6 +56,7 @@
     "webextension-polyfill": "^0.12.0"
   },
   "manifest": {
+    "default_locale": "en",
     "browser_specific_settings": {
       "gecko": {
         "id": "{29688c78-7d19-4122-8315-bbb81ad15cb4}",
