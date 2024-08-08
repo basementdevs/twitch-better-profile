@@ -27,7 +27,7 @@ export default function Profile({ user }: ProfileProps) {
       name: t("profileSettings"),
       value: "settings",
       content: (
-        <>
+        <div className="flex flex-col w-full gap-3">
           <SettingsForm
             user={user}
             pronouns={currentPronouns}
@@ -38,7 +38,7 @@ export default function Profile({ user }: ProfileProps) {
             pronouns={currentPronouns}
             color={color}
           />
-        </>
+        </div>
       ),
     },
     {
@@ -57,11 +57,6 @@ export default function Profile({ user }: ProfileProps) {
         occupation={currentOccupation}
       />
       <Tabs tabData={tabData} />
-      <SettingsForm
-        user={user}
-        pronouns={currentPronouns}
-        occupation={currentOccupation}
-      />
       <Button
         className={"w-full"}
         onClick={() => {

@@ -28,7 +28,7 @@ const TabContent: React.FC<{ value: string; content: React.ReactNode }> = ({
   content,
 }) => (
   <Tab.Content
-    className="grow py-6 bg-white dark:bg-background rounded-b-md"
+    className="grow bg-white dark:bg-background rounded-b-md"
     value={value}
   >
     {content}
@@ -37,7 +37,7 @@ const TabContent: React.FC<{ value: string; content: React.ReactNode }> = ({
 
 const Tabs: React.FC<TabsProps> = ({ tabData }) => (
   <Tab.Root
-    className="flex flex-col w-96 p-4 dark:bg-background"
+    className="flex flex-col w-full gap-3 dark:bg-background"
     defaultValue={tabData[0].value}
   >
     <Tab.List
