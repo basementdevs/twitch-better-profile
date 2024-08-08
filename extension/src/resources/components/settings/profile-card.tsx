@@ -13,7 +13,7 @@ export default function ProfileCard({
   occupation,
 }: ProfileCardProps) {
   return (
-    <div className="flex items-center mx-4 my-4 rounded-xl bg-muted">
+    <div className="flex items-center rounded-xl bg-muted">
       <img
         src={user.profile_image_url}
         alt="The user's profile"

@@ -61,7 +61,7 @@ export default function SettingsForm({
   };
 
   return (
-    <form className="p-1">
+    <form>
       <div className="flex flex-col w-full items-center gap-4">
         <div className="flex flex-col gap-2 w-full">
           <Label htmlFor="pronouns">{t("pronounsLabel")}</Label>

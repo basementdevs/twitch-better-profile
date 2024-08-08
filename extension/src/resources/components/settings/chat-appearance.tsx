@@ -16,7 +16,7 @@ export default function ChatAppearance({
   color,
 }: ChatAppearanceProps) {
   return (
-    <div className="flex flex-col space-y-2 pt-5">
+    <div className="flex flex-col space-y-2">
       <h1 className="text-gray-600 dark:text-gray-300">{t('chatAppearanceTitle')}</h1>
       <div className="flex items-center space-x-0.5">
         <img width={16} src={Logo} alt="logo" />

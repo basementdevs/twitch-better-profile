@@ -27,7 +27,7 @@ export default function Profile({ user }: ProfileProps) {
       name: t("profileSettings"),
       value: "settings",
       content: (
-        <>
+        <div className="flex flex-col w-full gap-3">
           <SettingsForm
             user={user}
             pronouns={currentPronouns}
@@ -38,7 +38,7 @@ export default function Profile({ user }: ProfileProps) {
             pronouns={currentPronouns}
             color={color}
           />
-        </>
+        </div>
       ),
     },
     {
@@ -49,7 +49,7 @@ export default function Profile({ user }: ProfileProps) {
   ];
 
   return (
-    <div className="max-w-96">
+    <div className="flex flex-col max-w-96 p-3 gap-3">
       <Header />
       <ProfileCard
         user={user}
