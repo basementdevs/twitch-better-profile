@@ -25,7 +25,7 @@ export default function ChatAppearance({
         </span>
         {pronouns && (
           <span className="font-light text-gray-500 dark:text-gray-400">
-            ({pronouns}):
+            ({t("pronouns" + pronouns.replace('/', ''))}):
           </span>
         )}
         <span className="font-light dark:text-gray-300">{t("chatAppearanceGreeting")}</span>

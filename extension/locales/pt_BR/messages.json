@@ -38,6 +38,9 @@
   "pronounsNone": {
     "message": "Nenhum"
   },
+  "pronounsnd": {
+    "message": "-"
+  },
   "pronounsHeHim": {
     "message": "Ele/Dele"
   },

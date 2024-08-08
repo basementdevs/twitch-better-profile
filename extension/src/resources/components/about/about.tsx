@@ -20,15 +20,16 @@ export default function AboutCard() {
           {t("aboutSubdescription")}
         </p>
       </div>
-      <div className="space-y-1">
-        <h1 className="font-semibold">{t("aboutChangelog")}</h1>
-        <a
-          href={changelogUrl}
-          className="text-sm underline font-medium text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-300 ease-in-out"
-        >
-          {t("aboutVersion")} {version}
-        </a>
-      </div>
+        { /* TODO: implement a robust changelog system (check issue #36) */}
+      {/*<div className="space-y-1">*/}
+      {/*  <h1 className="font-semibold">{t("aboutChangelog")}</h1>*/}
+      {/*  <a*/}
+      {/*    href={changelogUrl}*/}
+      {/*    className="text-sm underline font-medium text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-300 ease-in-out"*/}
+      {/*  >*/}
+      {/*    {t("aboutVersion")} {version}*/}
+      {/*  </a>*/}
+      {/*</div>*/}
 
       <div className="flex">
         <a href={repositoryUrl}>

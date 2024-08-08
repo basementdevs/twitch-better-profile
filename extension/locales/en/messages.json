@@ -38,6 +38,9 @@
   "pronounsNone": {
     "message": "None"
   },
+  "pronounsnd": {
+    "message": "-"
+  },
   "pronounsHeHim": {
     "message": "He/Him"
   },
