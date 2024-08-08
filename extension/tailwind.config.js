@@ -1,4 +1,4 @@
-const colors = require("tailwindcss/colors");
+// const colors = require("tailwindcss/colors");
 module.exports = {
   mode: "jit",
   darkMode: ["class"],
@@ -84,5 +84,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("tailwindcss/colors")],
+  plugins: [require("tailwindcss-animate")],
 };

@@ -2,6 +2,7 @@ import ChatMutationObserver from "@Scripting/observer";
 import PageWatcher, {
   PageWatcherState,
 } from "@Scripting/watchers/page-watcher";
+import styleText from "data-text:../style.css";
 
 const CHAT_LIST = ".chat-list--default,.chat-list--other,.chat-list";
 
@@ -14,20 +15,33 @@ export default class Kernel {
     this.observer = new ChatMutationObserver();
     this.pageWatcher = new PageWatcher();
     this.pageWatcher.init();
+
+    // Add a style element to the head
+    const style = document.createElement("style");
+    style.textContent = styleText;
+    document.head.appendChild(style);
   }
 
   init = () => {
     setInterval(() => {
       if (this.pageWatcher.matches() && !this.pageWatcher.observerRunning) {
-        console.log("TBP: PageWatcher matched, starting to listen to Twitch DOM...");
+        console.log(
+          "TBP: PageWatcher matched, starting to listen to Twitch DOM...",
+        );
         this.listenToTwitchDOM();
-      } else if (!this.pageWatcher.matches() && this.pageWatcher.observerRunning) {
+      } else if (
+        !this.pageWatcher.matches() &&
+        this.pageWatcher.observerRunning
+      ) {
         console.log("TBP: PageWatcher didn't match, stopping observer...");
         this.stop();
       } else if (this.pageWatcher.refresh()) {
         this.stop();
         this.listenToTwitchDOM();
-      } else if (!this.pageWatcher.matches() && !this.pageWatcher.observerRunning) {
+      } else if (
+        !this.pageWatcher.matches() &&
+        !this.pageWatcher.observerRunning
+      ) {
         //console.log("TBP: Not on a watchable page...");
       } else {
         //console.log("TBP: Waiting...");
@@ -54,7 +68,6 @@ export default class Kernel {
 
     this.pageWatcher.observerRunning = true;
     this.pageWatcher.pageState = PageWatcherState.MATCHED;
-
   }
 
   stop = () => {
@@ -62,4 +75,3 @@ export default class Kernel {
     this.observer.stop();
   };
 }
-

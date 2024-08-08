@@ -220,3 +220,90 @@
     }
   }
 }
+
+.tbp-tooltip-wrapper {
+  display: inline-block;
+  position: relative;
+
+  &:hover .tbp-tooltip {
+    display: block;
+  }
+}
+
+.tbp-tooltip {
+  padding: 3px 6px;
+  border-radius: 0.4rem;
+  background-color: white;
+  color: black;
+  display: none;
+  position: absolute;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  z-index: 2000;
+  pointer-events: none;
+  user-select: none;
+  white-space: pre;
+  margin-bottom: 6px;
+
+  &.tbp-tooltip--up {
+    top: auto;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 6px;
+
+    &.tbp-tooltip--align-center {
+      left: 50%;
+      transform: translateX(-50%);
+
+      &:after {
+        left: 50%;
+        margin-left: -3px;
+      }
+    }
+
+    &:after {
+      border-radius: 0 0 2px;
+      top: 100%;
+      left: 6px;
+      margin-top: -3px;
+    }
+  }
+
+  &:before {
+    top: -6px;
+    left: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    z-index: -1;
+  }
+
+  &:after {
+    background-color: var(--color-background-tooltip);
+    width: 6px;
+    height: 6px;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+
+  &:after,
+  &:before {
+    position: absolute;
+    content: '';
+  }
+}
+
+.tbp-chat-badge {
+  width: 18px;
+  height: 18px;
+}
+
+.chat-badge {
+  border-radius: 3px;
+}
+
+.tbp-chat-badge-container {
+  position: relative !important;
+  display: inline !important;
+}
