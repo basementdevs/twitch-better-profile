@@ -5,7 +5,9 @@ import { t } from "~utils/i18nUtils";
 
 export default function AboutCard() {
   const version = packageJson.version;
-  const changelogUrl = `https://github.com/basementdevs/twitch-addon-scylladb-rs/releases/tag/${version}`;
+  const repositoryUrl =
+    "https://github.com/basementdevs/twitch-addon-scylladb-rs/";
+  const changelogUrl = `${repositoryUrl}/releases/tag/${version}`;
 
   return (
     <div className="flex flex-col space-y-5">
@@ -15,7 +17,7 @@ export default function AboutCard() {
           {t("aboutDescription")}
         </p>
         <p className="text-sm text-gray-600 dark:text-gray-300">
-        {t("aboutSubdescription")}
+          {t("aboutSubdescription")}
         </p>
       </div>
       <div className="space-y-1">
@@ -29,7 +31,7 @@ export default function AboutCard() {
       </div>
 
       <div className="flex">
-        <a href="https://github.com/basementdevs/twitch-addon-scylladb-rs">
+        <a href={repositoryUrl}>
           <Github />
         </a>
       </div>

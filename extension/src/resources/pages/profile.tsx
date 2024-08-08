@@ -7,7 +7,7 @@ import { Storage } from "@plasmohq/storage";
 import { useStorage } from "@plasmohq/storage/dist/hook";
 import AboutCard from "~resources/components/about/about";
 import ChatAppearance from "~resources/components/settings/chat-appearance";
-import TabsDemo from "~resources/shad/components/ui/tabs";
+import Tabs from "~resources/shad/components/ui/tabs";
 
 import type { TwitchUser } from "~types/types";
 import { t } from "~utils/i18nUtils";
@@ -56,7 +56,7 @@ export default function Profile({ user }: ProfileProps) {
         pronouns={currentPronouns}
         occupation={currentOccupation}
       />
-      <TabsDemo tabData={tabData} />
+      <Tabs tabData={tabData} />
       <Button
         className={"w-full"}
         onClick={() => {

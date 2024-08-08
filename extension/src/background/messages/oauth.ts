@@ -55,7 +55,7 @@ async function getUserChatColor(
   accessToken: string,
   userId: number
 ): Promise<string | null> {
-  const usernameColor = await fetch(
+  const usernameColorRequest = await fetch(
     `${TWITCH_API_URL}/chat/color?user_id=${userId}`,
     {
       headers: {
@@ -65,11 +65,11 @@ async function getUserChatColor(
     }
   );
 
-  if (usernameColor.ok) {
-    const response: ColorChatUser = await usernameColor.json();
+  if (usernameColorRequest.ok) {
+    const response: ColorChatUser = await usernameColorRequest.json();
     return response.data[0].color;
   }
-  return null;
+  return "gray";
 }
 
 async function getTwitchUserByAccessToken(
