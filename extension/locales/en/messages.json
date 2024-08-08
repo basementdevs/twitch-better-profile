@@ -73,5 +73,32 @@
   },
   "occupationFullstackEngineer": {
     "message": "Full-stack engineer"
+  },
+  "chatAppearanceTitle": {
+    "message": "Chat Appareance"
+  },
+  "chatAppearanceGreeting": {
+    "message": "Hello!"
+  },
+  "chatAppearanceDescription": {
+    "message": "Your name color is set on your Twitch profile"
+  },
+  "aboutTitle": {
+    "message": "About"
+  },
+  "aboutDescription": {
+    "message": "Twitch Better Profile is maintained by BasementDevs team and it's totally open source."
+  },
+  "aboutSubdescription": {
+    "message": "Don't forget to star our project!"
+  },
+  "aboutChangelog": {
+    "message": "Changelog"
+  },
+  "aboutVersion": {
+    "message": "Version"
+  },
+  "profileSettings": {
+    "message": "Settings"
   }
 }

@@ -5,6 +5,9 @@ import { Button } from "@Shad/components/ui/button";
 
 import { Storage } from "@plasmohq/storage";
 import { useStorage } from "@plasmohq/storage/dist/hook";
+import AboutCard from "~resources/components/about/about";
+import ChatAppearance from "~resources/components/settings/chat-appearance";
+import Tabs from "~resources/shad/components/ui/tabs";
 
 import type { TwitchUser } from "~types/types";
 import { t } from "~utils/i18nUtils";
@@ -17,24 +20,43 @@ export default function Profile({ user }: ProfileProps) {
   const storage = new Storage();
   const [currentPronouns] = useStorage("pronouns");
   const [currentOccupation] = useStorage("occupation");
+  const [color] = useStorage("color");
+
+  const tabData = [
+    {
+      name: t("profileSettings"),
+      value: "settings",
+      content: (
+        <>
+          <SettingsForm
+            user={user}
+            pronouns={currentPronouns}
+            occupation={currentOccupation}
+          />
+          <ChatAppearance
+            user={user}
+            pronouns={currentPronouns}
+            color={color}
+          />
+        </>
+      ),
+    },
+    {
+      name: t("aboutTitle"),
+      value: "about",
+      content: <AboutCard />,
+    },
+  ];
 
   return (
     <div className="max-w-96">
       <Header />
-      <div>
-        <ProfileCard
-          user={user}
-          pronouns={currentPronouns}
-          occupation={currentOccupation}
-        />
-      </div>
-      <div className="py-30 px-3 my-4">
-        <SettingsForm
-          user={user}
-          pronouns={currentPronouns}
-          occupation={currentOccupation}
-        />
-      </div>
+      <ProfileCard
+        user={user}
+        pronouns={currentPronouns}
+        occupation={currentOccupation}
+      />
+      <Tabs tabData={tabData} />
       <Button
         className={"w-full"}
         onClick={() => {
