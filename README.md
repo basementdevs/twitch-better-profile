@@ -40,7 +40,7 @@ Ensure you have the following tools installed on your machine:
 
 You will also need a [Twitch Developer](https://dev.twitch.tv/) account and a [Twitch Application](.github/images/loading-extension.png).
 
-![Twitch Base](https://raw.githubusercontent.com/basementdevs/twitch-addon-scylladb-rs/main/.github/images/twitch-base.png)
+![alt text](.github/images/twitch-base.png)
 
 > **Note:** Set a default OAuth Callback URL when creating your extension.
 
