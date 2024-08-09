@@ -3,7 +3,7 @@ import browser from "webextension-polyfill";
 import type { PlasmoMessaging } from "@plasmohq/messaging";
 import { Storage } from "@plasmohq/storage";
 
-import type { TwitchUser, UserSettings } from "~types/types";
+import type { ColorChatUser, TwitchUser, UserSettings } from "~types/types";
 
 const CLIENT_ID = process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID;
 const TWITCH_API_URL = process.env.PLASMO_PUBLIC_TWITCH_API_URL;
@@ -19,8 +19,11 @@ const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
   const user = await getTwitchUserByAccessToken(accessToken);
   await storage.set("user", user);
 
-  const settings = await getUserDataByUsername(user.login);
+  const settings = await getUserDataByUsername(user.login, user.id);
   await storage.set("settings", settings);
+
+  const color = await getUserChatColor(accessToken, user.id);
+  await storage.set("color", color);
 
   if (settings) {
     await storage.set("pronouns", settings.pronouns);
@@ -35,6 +38,7 @@ const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
 
 async function getUserDataByUsername(
   username: string,
+  user_id: number,
 ): Promise<UserSettings | null> {
   const settings = await fetch(`${API_URL}/settings/${username}`, {
     headers: {
@@ -45,7 +49,50 @@ async function getUserDataByUsername(
   if (settings.ok) {
     return (await settings.json()) as UserSettings;
   }
+
+  const response = await fetch(
+    `${process.env.PLASMO_PUBLIC_API_URL}/settings`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pronouns: "n/d",
+        locale: navigator.language,
+        occupation: "none",
+        user_id: user_id,
+        username: username,
+      }),
+    },
+  );
+
+  if (settings.ok) {
+    return (await settings.json()) as UserSettings;
+  }
+
   return null;
+}
+
+async function getUserChatColor(
+  accessToken: string,
+  userId: number,
+): Promise<string | null> {
+  const usernameColorRequest = await fetch(
+    `${TWITCH_API_URL}/chat/color?user_id=${userId}`,
+    {
+      headers: {
+        "Client-ID": CLIENT_ID,
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+  if (usernameColorRequest.ok) {
+    const response: ColorChatUser = await usernameColorRequest.json();
+    return response.data[0].color;
+  }
+  return "gray";
 }
 
 async function getTwitchUserByAccessToken(

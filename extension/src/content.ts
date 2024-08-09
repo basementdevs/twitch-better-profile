@@ -17,6 +17,4 @@ export const config: PlasmoCSConfig = {
   all_frames: true,
 };
 
-// @ts-ignore
-
 new Kernel().init();

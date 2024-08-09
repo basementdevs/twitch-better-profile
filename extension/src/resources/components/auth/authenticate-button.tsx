@@ -14,7 +14,7 @@ export default function AuthenticateButton() {
 
   return (
     <div className="flex flex-row justify-center w-full">
-      <Button onClick={authenticate} style={{ width: 250, marginBottom: 32 }}>
+      <Button onClick={authenticate} style={{ width: 250 }}>
         <LucideTwitch />
         <p style={{ paddingLeft: 10 }}>{t("authenticateButtonText")}</p>
       </Button>
