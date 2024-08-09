@@ -1,4 +1,4 @@
-import Logo from "data-base64:~assets/icon.png";
+import Logo from "data-base64:@Root/assets/icon.png";
 import { cn } from "@Shad/lib/utils";
 import type { TwitchUser } from "~types/types";
 

@@ -6,8 +6,12 @@
   "author": "Daniel Reis. <danielhe4rt@gmail.com>",
   "scripts": {
     "dev": "plasmo dev",
-    "build": "plasmo build",
+    "prebuild": "pnpm rimraf build .plasmo",
+    "build": "pnpm build:firefox && pnpm build:chrome",
+    "build:firefox": "plasmo build --zip --target=firefox-mv2",
+    "build:chrome": "plasmo build --zip --target=chrome-mv3",
     "dev:firefox": "plasmo dev --target=firefox-mv2",
+    "dev:chrome": "plasmo dev --target=chrome-mv3",
     "package": "plasmo package",
     "check": "biome check",
     "check:fix": "biome check --write"
@@ -47,11 +51,12 @@
     "@types/react-dom": "18.2.18",
     "@types/webextension-polyfill": "^0.10.7",
     "postcss": "8.4.33",
-    "prettier": "3.2.4",
+    "rimraf": "6.0.1",
     "typescript": "5.3.3",
     "webextension-polyfill": "^0.12.0"
   },
   "manifest": {
+    "default_locale": "en",
     "browser_specific_settings": {
       "gecko": {
         "id": "{29688c78-7d19-4122-8315-bbb81ad15cb4}",
