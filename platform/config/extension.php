@@ -47,5 +47,10 @@ return [
             'slug' => 'fullstack-engineer',
             'translation_key' => 'FullstackEngineer'
         ],
+        [
+            'name' => 'UX/UI Designer',
+            'slug' => 'uxui-designer',
+            'translation_key' => 'UxUiDesigner'
+        ],
     ]
 ];
