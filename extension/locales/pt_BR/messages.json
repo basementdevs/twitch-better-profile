@@ -77,7 +77,7 @@
   "occupationFullstackEngineer": {
     "message": "Desenvolvedor Full-stack"
   },
-  "chatAppareanceTitle": {
+  "chatAppearanceTitle": {
     "message": "Aparência do Chat"
   },
   "chatAppearanceGreeting": {
@@ -103,5 +103,38 @@
   },
   "profileSettings": {
     "message": "Configurações"
+  },
+  "pronounsSheThey": {
+    "message": "Ela/Elu"
+  },
+  "pronounsHeThey": {
+    "message": "Ele/Elu"
+  },
+  "pronounsHeShe": {
+    "message": "Ele/Ela"
+  },
+  "pronounsXeXem": {
+    "message": "Xe/Xem"
+  },
+  "pronounsFaeFaer": {
+    "message": "Fae/Faer"
+  },
+  "pronounsVeVer": {
+    "message": "Ve/Ver"
+  },
+  "pronounsAeAer": {
+    "message": "Ae/Aer"
+  },
+  "pronounsZieHir": {
+    "message": "Zie/Hir"
+  },
+  "pronounsPerPer": {
+    "message": "Per/Per"
+  },
+  "pronounsEEm": {
+    "message": "E/Em"
+  },
+  "pronounsItIts": {
+    "message": "Isto/Sua"
   }
 }

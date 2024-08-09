@@ -59,6 +59,24 @@ export default function SettingsForm({
     }
   };
 
+  const pronounsItems = [
+    { apiValue: "n/d", translationKey: "None" },
+    { apiValue: "He/Him", translationKey: "HeHim" },
+    { apiValue: "She/Her", translationKey: "SheHer" },
+    { apiValue: "They/Them", translationKey: "TheyThem" },
+    { apiValue: "She/They", translationKey: "SheThey" },
+    { apiValue: "He/They", translationKey: "HeThey" },
+    { apiValue: "He/She", translationKey: "HeShe" },
+    { apiValue: "Xe/Xem", translationKey: "XeXem" },
+    { apiValue: "It/Its", translationKey: "ItIts" },
+    { apiValue: "Fae/Faer", translationKey: "FaeFaer" },
+    { apiValue: "Ve/Ver", translationKey: "VeVer" },
+    { apiValue: "Ae/Aer", translationKey: "AeAer" },
+    { apiValue: "Zie/Hir", translationKey: "ZieHir" },
+    { apiValue: "Per/Per", translationKey: "PerPer" },
+    { apiValue: "E/Em", translationKey: "EEm" },
+  ];
+
   return (
     <form>
       <div className="flex flex-col w-full items-center gap-4">
@@ -71,10 +89,11 @@ export default function SettingsForm({
             value={pronouns}
             className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300"
           >
-            <option value={"n/d"}>{t("pronounsNone")}</option>
-            <option value={"He/Him"}>{t("pronounsHeHim")}</option>
-            <option value={"She/Her"}>{t("pronounsSheHer")}</option>
-            <option value={"They/Them"}>{t("pronounsTheyThem")}</option>
+            {pronounsItems.map(({ translationKey, apiValue }) => (
+              <option key={translationKey} value={apiValue}>
+                {t(`pronouns${translationKey}`)}
+              </option>
+            ))}
           </select>
         </div>
 
