@@ -5,10 +5,15 @@ import { LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "~resources/shad/components/ui/button";
 
 import { t } from "~utils/i18nUtils";
-type HeaderProps = {
-  onStorageClear?: () => void;
-};
-export default function Header({ onStorageClear }: HeaderProps) {
+import { Storage } from "@plasmohq/storage";
+import { useStorage } from "@plasmohq/storage/dist/hook";
+
+export default function Header() {
+  const [isAuthenticated] = useStorage("accessToken");
+  const storage = new Storage();
+  const onStorageClear = async () => {
+    await storage.clear();
+  };
   return (
     <div className="flex flex-row justify-between items-center">
       <div className="flex gap-2  dark:text-twitch-11">
@@ -20,16 +25,16 @@ export default function Header({ onStorageClear }: HeaderProps) {
       </div>
 
       <div className="flex gap-2">
-        {onStorageClear ? (
+        <ModeToggle />
+        {isAuthenticated ? (
           <Button
             onClick={onStorageClear}
             size="icon"
-            className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex items-center dark:scale-100 scale-100 justify-center whitespace-nowrap text-sm font-medium disabled:opacity-50 border border-input  bg-background hover:bg-accent hover:text-accent-foreground"
           >
             <LogOut size={20} />
           </Button>
         ) : null}
-        <ModeToggle />
       </div>
     </div>
   );

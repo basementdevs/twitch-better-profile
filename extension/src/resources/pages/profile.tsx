@@ -9,6 +9,7 @@ import ChatAppearance from "@Components/settings/chat-appearance";
 import Tabs from "@Shad/components/ui/tabs";
 
 import type { TwitchUser } from "~types/types";
+import {t} from "~utils/i18nUtils";
 
 type ProfileProps = {
   user: TwitchUser;
