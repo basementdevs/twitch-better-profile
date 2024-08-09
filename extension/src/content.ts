@@ -1,5 +1,7 @@
 import type { PlasmoCSConfig } from "plasmo";
 
+import '@Scripting/scripting.css';
+
 import Kernel from "@Scripting/index";
 
 export const config: PlasmoCSConfig = {
