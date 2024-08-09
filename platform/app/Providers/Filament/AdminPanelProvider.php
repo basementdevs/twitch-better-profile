@@ -35,6 +35,10 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
+            ->plugins([
+                \ChrisReedIO\Socialment\SocialmentPlugin::make()
+                ->registerProvider('twitch', 'fab-twitch', 'Twitch')
+            ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
