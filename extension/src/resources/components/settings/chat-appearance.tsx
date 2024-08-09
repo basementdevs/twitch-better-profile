@@ -2,8 +2,8 @@ import Logo from "data-base64:@Root/assets/icon.png";
 import { cn } from "@Shad/lib/utils";
 import type { TwitchUser } from "~types/types";
 
-import { t } from "~utils/i18nUtils";
 import { env } from "@Config/env";
+import { t } from "~utils/i18nUtils";
 
 type ChatAppearanceProps = {
   user: TwitchUser;
