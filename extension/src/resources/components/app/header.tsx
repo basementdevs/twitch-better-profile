@@ -5,7 +5,7 @@ import { Button } from "~resources/shad/components/ui/button";
 
 import { t } from "~utils/i18nUtils";
 type HeaderProps = {
-  onStorageClear: () => void;
+  onStorageClear?: () => void;
 };
 export default function Header({ onStorageClear }: HeaderProps) {
   return (
@@ -14,14 +14,17 @@ export default function Header({ onStorageClear }: HeaderProps) {
         <UserIcon />
         <H4>{t("headerTitle")}</H4>
       </div>
+
       <div className="flex gap-2">
-        <Button
-          onClick={onStorageClear}
-          size="icon"
-          className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
-        >
-          <LogOut size={20} />
-        </Button>
+        {onStorageClear ? (
+          <Button
+            onClick={onStorageClear}
+            size="icon"
+            className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+          >
+            <LogOut size={20} />
+          </Button>
+        ) : null}
         <ModeToggle />
       </div>
     </div>
