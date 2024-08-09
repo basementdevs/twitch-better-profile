@@ -39,7 +39,7 @@ const enhanceChatMessage = async (messageEl: HTMLElement) => {
   }
 };
 
-const buildBadge = (_badge) => {
+const buildBadge = (occupation) => {
   // Create a div element
   const badgeContainer = document.createElement("div");
   badgeContainer.className = "InjectLayout-sc-1i43xsx-0 jbmPmA";
@@ -50,8 +50,9 @@ const buildBadge = (_badge) => {
   img.width = 18;
   img.setAttribute("aria-label", "Just a thing");
   img.className = "chat-badge";
-  img.src = `${API_URL}/static/icons/mod.png`;
-  img.srcset = `${API_URL}/static/icons/mod.png 1x,${API_URL}/static/icons/mod.png 2x,${API_URL}/static/icons/mod.png 4x`;
+  const badgeUrl = `${API_URL}/static/icons/${occupation}.png`;
+  img.src = badgeUrl;
+  img.srcset = `${badgeUrl} 1x,${badgeUrl} 2x,${badgeUrl} 4x`;
 
   // Append the img to the div
   badgeContainer.appendChild(img);

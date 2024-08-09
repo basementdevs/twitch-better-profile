@@ -4,6 +4,7 @@ import type { PlasmoMessaging } from "@plasmohq/messaging";
 import { Storage } from "@plasmohq/storage";
 
 import type { ColorChatUser, TwitchUser, UserSettings } from "~types/types";
+import Browser from "webextension-polyfill";
 
 const CLIENT_ID = process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID;
 const TWITCH_API_URL = process.env.PLASMO_PUBLIC_TWITCH_API_URL;
@@ -38,6 +39,7 @@ const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
 
 async function getUserDataByUsername(
   username: string,
+  user_id: number
 ): Promise<UserSettings | null> {
   const settings = await fetch(`${API_URL}/settings/${username}`, {
     headers: {
@@ -48,6 +50,28 @@ async function getUserDataByUsername(
   if (settings.ok) {
     return (await settings.json()) as UserSettings;
   }
+
+  const response = await fetch(
+    `${process.env.PLASMO_PUBLIC_API_URL}/settings`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pronouns: "n/d",
+        locale: navigator.language,
+        occupation: "none",
+        user_id: user_id,
+        username: username,
+      }),
+    },
+  );
+
+  if (settings.ok) {
+    return (await settings.json()) as UserSettings;
+  }
+
   return null;
 }
 
