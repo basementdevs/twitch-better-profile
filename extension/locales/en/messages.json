@@ -38,6 +38,9 @@
   "pronounsNone": {
     "message": "None"
   },
+  "pronounsnd": {
+    "message": "-"
+  },
   "pronounsHeHim": {
     "message": "He/Him"
   },
@@ -73,5 +76,65 @@
   },
   "occupationFullstackEngineer": {
     "message": "Full-stack engineer"
+  },
+  "chatAppearanceTitle": {
+    "message": "Chat Appearance"
+  },
+  "chatAppearanceGreeting": {
+    "message": "Hello!"
+  },
+  "chatAppearanceDescription": {
+    "message": "Your name color is set on your Twitch profile"
+  },
+  "aboutTitle": {
+    "message": "About"
+  },
+  "aboutDescription": {
+    "message": "Twitch Better Profile is maintained by BasementDevs team and it's totally open source."
+  },
+  "aboutSubdescription": {
+    "message": "Don't forget to star our project!"
+  },
+  "aboutChangelog": {
+    "message": "Changelog"
+  },
+  "aboutVersion": {
+    "message": "Version"
+  },
+  "profileSettings": {
+    "message": "Settings"
+  },
+  "pronounsSheThey": {
+    "message": "She/They"
+  },
+  "pronounsHeThey": {
+    "message": "He/They"
+  },
+  "pronounsHeShe": {
+    "message": "He/She"
+  },
+  "pronounsXeXem": {
+    "message": "Xe/Xem"
+  },
+  "pronounsFaeFaer": {
+    "message": "Fae/Faer"
+  },
+  "pronounsVeVer": {
+    "message": "Ve/Ver"
+  },
+  "pronounsAeAer": {
+    "message": "Ae/Aer"
+  },
+  "pronounsZieHir": {
+    "message": "Zie/Hir"
+  },
+  "pronounsPerPer": {
+    "message": "Per/Per"
+  },
+  "pronounsEEm": {
+    "message": "E/Em"
+  },
+  "pronounsItIts": {
+    "message": "It/Its"
   }
 }

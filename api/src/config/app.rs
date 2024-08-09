@@ -12,7 +12,7 @@ pub struct AppState {
 
 impl AppState {
   pub async fn new() -> Self {
-    dotenv().expect(".en()v file not found");
+    dotenv().expect(".env file not found");
 
     let config = Config::new();
     let session: Session = SessionBuilder::new()

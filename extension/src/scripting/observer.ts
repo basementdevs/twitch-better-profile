@@ -1,5 +1,9 @@
 import MessageQueue from "~scripting/queue";
 
+const TWITCH_CHAT_CONTAINER = "chat-line__message";
+const SEVEN_TV_CHAT_CONTAINER = "seventv-message";
+const CHAT_CONTAINER = [TWITCH_CHAT_CONTAINER, SEVEN_TV_CHAT_CONTAINER];
+
 export default class ChatMutationObserver {
   private observer: MutationObserver;
 
@@ -66,6 +70,7 @@ export default class ChatMutationObserver {
     if (mutations[0].previousSibling?.localName === "span") {
       return;
     }
+    console.log("TBP: Mutation detected");
 
     for (const mutation of mutations) {
       if (mutation.type !== "childList") {
@@ -82,10 +87,13 @@ export default class ChatMutationObserver {
         if (this.processedNodes.has(addedNode)) {
           return; // Skip already processed nodes
         }
-
-        if (addedNode.classList.contains("chat-line__message")) {
-          this.messagesBatch.push(addedNode);
-          this.processedNodes.add(addedNode);
+        console.log("TBP: ", addedNode.classList);
+        for (const container of CHAT_CONTAINER) {
+          if (addedNode.classList.contains(container)) {
+            console.log("TBP: Added node detected");
+            this.messagesBatch.push(addedNode);
+            this.processedNodes.add(addedNode);
+          }
         }
       });
     }

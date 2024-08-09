@@ -9,7 +9,23 @@ use crate::http::SomeError;
 use crate::models::materialized_views::settings_by_username::SettingsByUsername;
 use crate::models::settings::Settings;
 
-static AVAILABLE_PRONOUNS: &[&str] = &["n/d", "he/him", "she/her", "they/them"];
+static AVAILABLE_PRONOUNS: &[&str] = &[
+  "n/d",
+  "he/him",
+  "she/her",
+  "they/them",
+  "she/they",
+  "he/they",
+  "he/she",
+  "xe/xem",
+  "fae/faer",
+  "ve/ver",
+  "ae/aer",
+  "zie/hir",
+  "per/per",
+  "e/em",
+  "it/its",
+];
 
 #[put("/settings")]
 pub async fn put_settings(

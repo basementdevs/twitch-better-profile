@@ -13,7 +13,7 @@ export default function ProfileCard({
   occupation,
 }: ProfileCardProps) {
   return (
-    <div className="flex items-center mx-4 my-4 rounded-xl bg-muted">
+    <div className="flex items-center rounded-xl bg-muted">
       <img
         src={user.profile_image_url}
         alt="The user's profile"
@@ -31,7 +31,7 @@ export default function ProfileCard({
             className="text-gray-600 dark:text-gray-300 text-sm m-0 p-0"
             id="roleEl"
           >
-            {occupation ?? t("occupationNone")}
+            {t(`occupation${occupation}`) ?? t("occupationNone")}
           </p>
         </div>
         <div className="mt-2">
@@ -47,7 +47,9 @@ export default function ProfileCard({
               className="text-gray-600 dark:text-gray-300 ml-2"
               id="pronounsEl"
             >
-              {pronouns}
+              {pronouns
+                ? t(`pronouns${pronouns.replace("/", "")}`)
+                : t("pronounsNone")}
             </span>
           </p>
         </div>

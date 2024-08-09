@@ -3,13 +3,27 @@ import type { Settings } from "./types";
 
 const API_URL: string = process.env.PLASMO_PUBLIC_API_URL;
 
+const TWITCH_BADGES_CONTAINER = ".chat-line__username-container";
+const SEVEN_TV_BADGES_CONTAINER = ".seventv-chat-user-badge-list";
+
+const TWITCH_USERNAME_CONTAINER = ".chat-line__username";
+const SEVEN_TV_USERNAME_CONTAINER = ".seventv-chat-user-username";
+const USERNAME_CONTAINER = `${TWITCH_USERNAME_CONTAINER},${SEVEN_TV_USERNAME_CONTAINER}`;
+
 const enhanceChatMessage = async (messageEl: HTMLElement) => {
-  const usernameEl = messageEl.querySelector(".chat-line__username");
-  let badgesEl = messageEl.querySelector(".chat-line__username-container");
+  const usernameEl = messageEl.querySelector(USERNAME_CONTAINER);
 
-  if (!badgesEl) return;
-
-  badgesEl = badgesEl.childNodes[0] as Element;
+  /**
+   * TODO: make adapters based on which plugins the user has installed (compatibility mode)
+   * Restructure the code to make it more modular and easy to maintain (Goal: 1.0.0)
+   **/
+  let badgesEl: Element;
+  badgesEl = messageEl.querySelector(TWITCH_BADGES_CONTAINER);
+  if (badgesEl) {
+    badgesEl = badgesEl.childNodes[0] as Element;
+  } else {
+    badgesEl = messageEl.querySelector(SEVEN_TV_BADGES_CONTAINER);
+  }
 
   if (!usernameEl) {
     return;
@@ -71,10 +85,13 @@ const badgeTemplate = (_url: string, description: string) => {
   return badgeContainer;
 };
 
-const buildBadge = (_badge) => {
+const buildBadge = (occupation) => {
   // Create a div element
   const badgeContainer = document.createElement("div");
-  badgeContainer.className = "InjectLayout-sc-1i43xsx-0 jbmPmA";
+  badgeContainer.className =
+    "InjectLayout-sc-1i43xsx-0 jbmPmA seventv-chat-badge";
+  // SevenTV Stuff
+  badgeContainer.setAttributeNode(document.createAttribute("data-v-9f956e7d"));
 
   // Parent button
   const button = document.createElement("button");
@@ -87,8 +104,9 @@ const buildBadge = (_badge) => {
   img.setAttribute("aria-label", "Just a thing");
   img.setAttribute("data-a-target", "chat-badge");
   img.className = "chat-badge";
-  img.src = `${API_URL}/static/icons/mod.png`;
-  img.srcset = `${API_URL}/static/icons/mod.png 1x,${API_URL}/static/icons/mod.png 2x,${API_URL}/static/icons/mod.png 4x`;
+  const badgeUrl = `${API_URL}/static/icons/${occupation}.png`;
+  img.src = badgeUrl;
+  img.srcset = `${badgeUrl} 1x,${badgeUrl} 2x,${badgeUrl} 4x`;
 
   button.appendChild(img);
   badgeContainer.appendChild(button);
