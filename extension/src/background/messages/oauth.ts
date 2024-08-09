@@ -19,7 +19,7 @@ const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
   const user = await getTwitchUserByAccessToken(accessToken);
   await storage.set("user", user);
 
-  const settings = await getUserDataByUsername(user.login);
+  const settings = await getUserDataByUsername(user.login, user.id);
   await storage.set("settings", settings);
 
   const color = await getUserChatColor(accessToken, user.id);
@@ -38,6 +38,7 @@ const handler: PlasmoMessaging.MessageHandler = async (req, res) => {
 
 async function getUserDataByUsername(
   username: string,
+  user_id: number,
 ): Promise<UserSettings | null> {
   const settings = await fetch(`${API_URL}/settings/${username}`, {
     headers: {
@@ -48,6 +49,28 @@ async function getUserDataByUsername(
   if (settings.ok) {
     return (await settings.json()) as UserSettings;
   }
+
+  const response = await fetch(
+    `${process.env.PLASMO_PUBLIC_API_URL}/settings`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pronouns: "n/d",
+        locale: navigator.language,
+        occupation: "none",
+        user_id: user_id,
+        username: username,
+      }),
+    },
+  );
+
+  if (settings.ok) {
+    return (await settings.json()) as UserSettings;
+  }
+
   return null;
 }
 

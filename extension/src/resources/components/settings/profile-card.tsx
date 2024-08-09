@@ -31,7 +31,7 @@ export default function ProfileCard({
             className="text-gray-600 dark:text-gray-300 text-sm m-0 p-0"
             id="roleEl"
           >
-            {occupation ?? t("occupationNone")}
+            {t(`occupation${occupation}`) ?? t("occupationNone")}
           </p>
         </div>
         <div className="mt-2">

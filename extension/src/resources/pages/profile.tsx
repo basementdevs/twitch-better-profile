@@ -37,6 +37,7 @@ export default function Profile({ user }: ProfileProps) {
             user={user}
             pronouns={currentPronouns}
             color={color}
+            occupation={currentOccupation}
           />
         </div>
       ),
