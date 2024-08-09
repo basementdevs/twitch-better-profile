@@ -34,7 +34,6 @@ export default function SettingsForm({
 
   const updateSettings = async () => {
     const storage = new Storage();
-    console.log("Updating pronouns");
     const selectedPronoun = pronounsListEl.current.value;
     const selectedOccupation = occupationListEl.current.value;
     const response = await fetch(

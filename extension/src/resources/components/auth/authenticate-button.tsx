@@ -7,7 +7,6 @@ import { t } from "~utils/i18nUtils";
 
 export default function AuthenticateButton() {
   const authenticate = async () => {
-    console.log("authenticate");
     await sendToBackground({
       name: "oauth",
     });
