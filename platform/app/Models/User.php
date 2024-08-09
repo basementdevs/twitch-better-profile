@@ -63,10 +63,10 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         $cachedAvatar = cache()->remember("user-{$this->id}-avatar", now()->addMinutes(5), function () {
             $twitchUser = $this->accounts()->where('provider', '=' , 'twitch')->first();
 
-            return $twitchUser->avatar;
+            return $twitchUser?->avatar;
         });
 
-        return $cachedAvatar ?? null;
+        return $cachedAvatar ?? 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email)));
     }
 
     public function accounts(): HasMany

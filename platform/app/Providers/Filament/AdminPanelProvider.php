@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Violet,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -42,10 +42,8 @@ class AdminPanelProvider extends PanelProvider
                     ->registerProvider('twitch', 'fab-twitch', 'Twitch'),
                 BreezyCore::make()
                     ->myProfile(
-                        shouldRegisterUserMenu: true, // Sets the 'account' link in the panel User Menu (default = true)
                         shouldRegisterNavigation: true, // Adds a main navigation item for the My Profile page (default = false)
-                        navigationGroup: 'Settings', // Sets the navigation group for the My Profile page (default = null)
-                        hasAvatars: false, // Enables the avatar upload form component (default = false)
+                        navigationGroup: 'Settings', // Sets the navigation group for the My Profile page (default = null)e)
                         slug: 'profile' // Sets the slug for the profile page (default = 'my-profile')
                     )
             ])
