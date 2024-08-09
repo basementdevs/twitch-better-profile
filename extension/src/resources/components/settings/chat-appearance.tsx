@@ -3,7 +3,7 @@ import { cn } from "@Shad/lib/utils";
 import type { TwitchUser } from "~types/types";
 
 import { t } from "~utils/i18nUtils";
-import { env } from "../../../config/env";
+import { env } from "@Config/env";
 
 type ChatAppearanceProps = {
   user: TwitchUser;
