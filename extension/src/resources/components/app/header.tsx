@@ -19,7 +19,7 @@ export default function Header() {
       <div className="flex gap-2  dark:text-twitch-11">
         <UserIcon />
         <H4>{t("headerTitle")}</H4>
-        <span className=" font-light tracking-tight text-xs mt-2  text-slate-100">
+        <span className=" font-light tracking-tight text-xs mt-2 text-slate-800  dark:text-slate-100">
           v{version}
         </span>
       </div>
