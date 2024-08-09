@@ -7,7 +7,6 @@ import { Storage } from "@plasmohq/storage";
 import { useStorage } from "@plasmohq/storage/dist/hook";
 
 import type { TwitchUser } from "~types/types";
-import { t } from "~utils/i18nUtils";
 
 type ProfileProps = {
   user: TwitchUser;
