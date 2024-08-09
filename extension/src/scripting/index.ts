@@ -3,7 +3,9 @@ import PageWatcher, {
   PageWatcherState,
 } from "@Scripting/watchers/page-watcher";
 
-const CHAT_LIST = ".chat-list--default,.chat-list--other,.chat-list";
+const TWITCH_CHAT_LIST = ".chat-list--default,.chat-list--other,.chat-list";
+const SEVEN_TV_CHAT_LIST = ".seventv-chat-list";
+const CHAT_LIST = `${TWITCH_CHAT_LIST},${SEVEN_TV_CHAT_LIST}`;
 
 export default class Kernel {
   // Core components
