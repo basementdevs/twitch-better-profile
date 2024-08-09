@@ -1,14 +1,14 @@
 import * as Tab from "@radix-ui/react-tabs";
 import type React from "react";
 
-type Tab = {
+type Tabs = {
   name: string;
   value: string;
   content: React.ReactNode;
 };
 
 type TabsProps = {
-  tabData: Tab[];
+  tabData: Tabs[];
 };
 
 const TabTrigger: React.FC<{ name: string; value: string }> = ({
