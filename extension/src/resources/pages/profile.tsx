@@ -14,13 +14,13 @@ type ProfileProps = {
 };
 
 export default function Profile({ user }: ProfileProps) {
-  const storage = new Storage();
+  const onStorageClear = new Storage().clear;
   const [currentPronouns] = useStorage("pronouns");
   const [currentOccupation] = useStorage("occupation");
 
   return (
     <div className="max-w-96">
-      <Header />
+      <Header onStorageClear={onStorageClear} />
       <div>
         <ProfileCard
           user={user}
@@ -35,14 +35,6 @@ export default function Profile({ user }: ProfileProps) {
           occupation={currentOccupation}
         />
       </div>
-      <Button
-        className={"w-full"}
-        onClick={() => {
-          storage.clear();
-        }}
-      >
-        {t("logoutButtonText")}
-      </Button>
     </div>
   );
 }
