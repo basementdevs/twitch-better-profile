@@ -16,11 +16,10 @@ export default function ChatAppearance({
   user,
   pronouns,
   color,
-  occupation
+  occupation,
 }: ChatAppearanceProps) {
-
-  let baseUrl = env.data.PLASMO_PUBLIC_API_URL;
-  let occupationIcon = occupation ? occupation.toLowerCase() : 'none';
+  const baseUrl = env.data.PLASMO_PUBLIC_API_URL;
+  const occupationIcon = occupation ? occupation.toLowerCase() : "none";
 
   return (
     <div className="flex flex-col space-y-2">
@@ -28,7 +27,11 @@ export default function ChatAppearance({
         {t("chatAppearanceTitle")}
       </h1>
       <div className="flex items-center space-x-0.5">
-        <img width={18} src={`${baseUrl}/static/icons/${occupationIcon}.png`} alt="logo" />
+        <img
+          width={18}
+          src={`${baseUrl}/static/icons/${occupationIcon}.png`}
+          alt="logo"
+        />
         <span className={cn(`font-bold text-[${color}]`)}>
           {user.display_name}
         </span>
