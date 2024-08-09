@@ -95,7 +95,6 @@ export default class ChatMutationObserver {
             this.processedNodes.add(addedNode);
           }
         }
-
       });
     }
 

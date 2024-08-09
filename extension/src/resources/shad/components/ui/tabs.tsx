@@ -1,5 +1,5 @@
-import React from "react";
 import * as Tab from "@radix-ui/react-tabs";
+import type React from "react";
 
 type Tab = {
   name: string;

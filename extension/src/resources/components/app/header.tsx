@@ -4,9 +4,9 @@ import { H4 } from "@Shad/components/ui/typography/h4";
 import { LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "~resources/shad/components/ui/button";
 
-import { t } from "~utils/i18nUtils";
 import { Storage } from "@plasmohq/storage";
 import { useStorage } from "@plasmohq/storage/dist/hook";
+import { t } from "~utils/i18nUtils";
 
 export default function Header() {
   const [isAuthenticated] = useStorage("accessToken");

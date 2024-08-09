@@ -10,7 +10,6 @@ const SEVEN_TV_USERNAME_CONTAINER = ".seventv-chat-user-username";
 const USERNAME_CONTAINER = `${TWITCH_USERNAME_CONTAINER},${SEVEN_TV_USERNAME_CONTAINER}`;
 
 const enhanceChatMessage = async (messageEl: HTMLElement) => {
-
   const usernameEl = messageEl.querySelector(USERNAME_CONTAINER);
 
   /**
@@ -56,7 +55,8 @@ const enhanceChatMessage = async (messageEl: HTMLElement) => {
 const buildBadge = (occupation) => {
   // Create a div element
   const badgeContainer = document.createElement("div");
-  badgeContainer.className = "InjectLayout-sc-1i43xsx-0 jbmPmA seventv-chat-badge";
+  badgeContainer.className =
+    "InjectLayout-sc-1i43xsx-0 jbmPmA seventv-chat-badge";
   // SevenTV Stuff
   badgeContainer.setAttributeNode(document.createAttribute("data-v-9f956e7d"));
 
