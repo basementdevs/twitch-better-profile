@@ -94,8 +94,7 @@ async function enhanceTwitchPopover(nameCard: Node, detailsCard: Node) {
   const i18nPronouns = t(`pronouns${currentPronoun.translationKey}`);
   // @ts-ignore
   nameCard.innerHTML += `<span class="pronouns-card">(${i18nPronouns})</span>`;
-  let occupationObject = occupations.find((o) => o.apiKey === res.occupation);
-  console.log(occupationObject.translationKey);
+  let occupationObject = occupations.find((o) => o.apiValue === res.occupation);
   const occupation = t(`occupation${occupationObject.translationKey}`);
 
   const occupationContainer = document.createElement("div");
