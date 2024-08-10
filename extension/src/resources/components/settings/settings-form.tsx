@@ -49,6 +49,10 @@ export const occupations = [
     translationKey: "FullstackEngineer",
     apiValue: "fullstack-engineer",
   },
+  {
+    translationKey: "UxUiDesigner",
+    apiValue: "designer",
+  },
 ];
 
 export const pronounsItems = [
