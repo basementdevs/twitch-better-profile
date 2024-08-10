@@ -65,16 +65,18 @@ export default class PopoverMutationObserver {
 
   private processMutation(mutations: MutationRecord[]) {
     mutations.forEach((mutation) => {
-      const cardLoaded = mutation.target.querySelector("#VIEWER_CARD_ID");
+      const target = mutation.target as Element;
+
+      const cardLoaded = target.querySelector("#VIEWER_CARD_ID");
       if (
         cardLoaded &&
         mutation.type === "childList" &&
         mutation.addedNodes.length > 0
       ) {
-        const containerNameCard = mutation.target.querySelector(
+        const containerNameCard = target.querySelector(
           ".CoreText-sc-1txzju1-0"
         );
-        const containerDetailsCard = mutation.target.querySelector(
+        const containerDetailsCard = target.querySelector(
           ".viewer-card-header__display-name"
         );
 
