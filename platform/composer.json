@@ -1,8 +1,9 @@
 {
-    "name": "laravel/laravel",
+    "name": "basementdevs/tbp-platform",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "version": "0.1.0",
+    "description": "Platform to manage the TBP project",
+    "keywords": ["laravel", "framework", "scylladb", "postgresql", "tbp", "twitch"],
     "license": "MIT",
     "require": {
         "php": "^8.2",

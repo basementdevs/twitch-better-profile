@@ -4,6 +4,8 @@ const raw_env = {
   PLASMO_PUBLIC_TWITCH_CLIENT_ID: process.env.PLASMO_PUBLIC_TWITCH_CLIENT_ID,
   PLASMO_PUBLIC_TWITCH_API_URL: process.env.PLASMO_PUBLIC_TWITCH_API_URL,
   PLASMO_PUBLIC_API_URL: process.env.PLASMO_PUBLIC_API_URL,
+  APP_ENVIRONMENT: process.env.PLASMO_PUBLIC_ENVIRONMENT,
+  APP_STAGE: process.env.PLASMO_PUBLIC_STAGE,
 };
 
 const envSchema = z.object({
@@ -19,6 +21,14 @@ const envSchema = z.object({
     .string()
     .trim()
     .min(1, "PLASMO_PUBLIC_API_URL is missing or empty"),
+  APP_ENVIRONMENT: z
+      .string()
+      .trim()
+      .min(1, "PLASMO_PUBLIC_ENVIRONMENT is missing or empty"),
+  APP_STAGE: z
+      .string()
+      .trim()
+      .min(1, "PLASMO_PUBLIC_STAGE is missing or empty"),
 });
 
 const mapZodErrorMessages = (zodError: ZodError): string[] => {

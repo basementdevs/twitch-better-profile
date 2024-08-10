@@ -7,6 +7,7 @@ import { Button } from "~resources/shad/components/ui/button";
 import { Storage } from "@plasmohq/storage";
 import { useStorage } from "@plasmohq/storage/dist/hook";
 import { t } from "~utils/i18nUtils";
+import {env} from "~config/env";
 
 export default function Header() {
   const [isAuthenticated] = useStorage("accessToken");
@@ -20,7 +21,7 @@ export default function Header() {
         <UserIcon />
         <H4>{t("headerTitle")}</H4>
         <span className=" font-light tracking-tight text-xs mt-2 text-slate-800  dark:text-slate-100">
-          v{version}
+          v{version} {env.data.APP_ENVIRONMENT === "production" ? `(${env.data.APP_STAGE})` : `(dev)`}
         </span>
       </div>
 

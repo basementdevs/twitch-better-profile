@@ -1,7 +1,7 @@
 {
   "name": "twitch-better-profile",
   "displayName": "Twitch Better Profile",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "A new way to first interact with users on Twitch.",
   "author": "Daniel Reis. <danielhe4rt@gmail.com>",
   "scripts": {
