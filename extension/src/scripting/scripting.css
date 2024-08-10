@@ -1,0 +1,12 @@
+.job-container {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+    gap: 9px;
+}
+
+.pronouns-card {
+    margin-left: 4px;
+    font-size: 14px;
+    font-weight: 300; /* font-light */
+}

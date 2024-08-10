@@ -1,4 +1,6 @@
 import { t } from "~utils/i18nUtils";
+import { useStorage } from "@plasmohq/storage/dist/hook";
+import { occupations, pronounsItems } from "@Components/settings/settings-form";
 
 const API_URL: string = process.env.PLASMO_PUBLIC_API_URL;
 
@@ -76,4 +78,33 @@ const buildBadge = (occupation) => {
   return badgeContainer;
 };
 
-export { enhanceChatMessage };
+async function enhanceTwitchPopover(nameCard: Node, detailsCard: Node) {
+  const username = nameCard.textContent.trim();
+
+  const uri = `${API_URL}/settings/${username}`;
+  const req = await fetch(uri);
+
+  if (!req.ok) {
+    return;
+  }
+
+  const res = await req.json();
+  const currentPronoun = pronounsItems.find((p) => p.apiValue === res.pronouns);
+
+  const i18nPronouns = t(`pronouns${currentPronoun.translationKey}`);
+  // @ts-ignore
+  nameCard.innerHTML += `<span class="pronouns-card">(${i18nPronouns})</span>`;
+  let occupationObject = occupations.find((o) => o.apiValue === res.occupation);
+  const occupation = t(`occupation${occupationObject.translationKey}`);
+
+  const occupationContainer = document.createElement("div");
+  occupationContainer.className = "occupation-job";
+  occupationContainer.innerHTML = `
+            ${buildBadge(res.occupation).outerHTML}
+            <span>${occupation}</span>
+          `;
+
+  detailsCard.appendChild(occupationContainer);
+}
+
+export { enhanceChatMessage, enhanceTwitchPopover };

@@ -1,19 +1,23 @@
-import ChatMutationObserver from "@Scripting/observer";
+import ChatMutationObserver from "@Scripting/observers/chat-observer";
 import PageWatcher, {
   PageWatcherState,
 } from "@Scripting/watchers/page-watcher";
+import PopoverMutationObserver from "@Scripting/observers/popover-observer";
 
 const TWITCH_CHAT_LIST = ".chat-list--default,.chat-list--other,.chat-list";
 const SEVEN_TV_CHAT_LIST = ".seventv-chat-list";
 const CHAT_LIST = `${TWITCH_CHAT_LIST},${SEVEN_TV_CHAT_LIST}`;
+const POPOVER_ELEMENT = ".viewer-card-layer";
 
 export default class Kernel {
   // Core components
-  private observer: ChatMutationObserver;
+  private chatObserver: ChatMutationObserver;
   private pageWatcher: PageWatcher;
+  private popoverObserver: PopoverMutationObserver;
 
   constructor() {
-    this.observer = new ChatMutationObserver();
+    this.chatObserver = new ChatMutationObserver();
+    this.popoverObserver = new PopoverMutationObserver()
     this.pageWatcher = new PageWatcher();
     this.pageWatcher.init();
   }
@@ -54,9 +58,16 @@ export default class Kernel {
     }
 
     const chat = chatElements as Node;
+    const popover = document.querySelector(POPOVER_ELEMENT) as Node;
     console.log("TBP: Loaded! Starting to listen to new messages...");
 
-    this.observer.start(chat, {
+    this.chatObserver.start(chat, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+
+    this.popoverObserver.start(popover, {
       childList: true,
       subtree: true,
       characterData: true,
@@ -68,6 +79,7 @@ export default class Kernel {
 
   stop = () => {
     this.pageWatcher.observerRunning = false;
-    this.observer.stop();
+    this.chatObserver.stop();
+    this.popoverObserver.stop();
   };
 }
