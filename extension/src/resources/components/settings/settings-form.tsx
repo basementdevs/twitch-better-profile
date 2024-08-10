@@ -15,39 +15,39 @@ interface SettingsFormProps {
 export const occupations = [
   {
     translationKey: "None",
-    apiKey: "none"
+    apiValue: "none",
   },
   {
     translationKey: "Student",
-    apiKey: "student"
+    apiValue: "student",
   },
   {
     translationKey: "Lawyer",
-    apiKey: "lawyer"
+    apiValue: "lawyer",
   },
   {
     translationKey: "Doctor",
-    apiKey: "doctor"
+    apiValue: "doctor",
   },
   {
     translationKey: "CivilEngineer",
-    apiKey: "civil-engineer"
+    apiValue: "civil-engineer",
   },
   {
     translationKey: "FrontEndEngineer",
-    apiKey: "frontend-engineer"
+    apiValue: "frontend-engineer",
   },
   {
     translationKey: "SreEngineer",
-    apiKey: "sre-engineer"
+    apiValue: "sre-engineer",
   },
   {
     translationKey: "BackEndEngineer",
-    apiKey: "backend-engineer"
+    apiValue: "backend-engineer",
   },
   {
     translationKey: "FullstackEngineer",
-    apiKey: "fullstack-engineer"
+    apiValue: "fullstack-engineer",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function SettingsForm({
           user_id: user.id,
           username: user.display_name,
         }),
-      },
+      }
     );
 
     if (response.ok) {
@@ -103,8 +103,6 @@ export default function SettingsForm({
       await storage.set("occupation", selectedOccupation);
     }
   };
-
-
 
   return (
     <form>
@@ -135,8 +133,8 @@ export default function SettingsForm({
             value={occupation}
             className="flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300"
           >
-            {occupations.map(({translationKey, apiKey}, idx) => (
-              <option key={idx} value={apiKey}>
+            {occupations.map(({ translationKey, apiValue }) => (
+              <option key={translationKey} value={apiValue}>
                 {t(`occupation${translationKey}`)}
               </option>
             ))}

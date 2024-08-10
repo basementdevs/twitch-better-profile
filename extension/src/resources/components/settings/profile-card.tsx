@@ -12,6 +12,12 @@ export default function ProfileCard({
   pronouns,
   occupation,
 }: ProfileCardProps) {
+  // frontend-engineer -> FrontEndEngineer
+  const transformedOcuppation = occupation
+    ?.split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("");
+
   return (
     <div className="flex items-center rounded-xl bg-muted">
       <img
@@ -31,7 +37,7 @@ export default function ProfileCard({
             className="text-gray-600 dark:text-gray-300 text-sm m-0 p-0"
             id="roleEl"
           >
-            {t(`occupation${occupation}`) ?? t("occupationNone")}
+            {t(`occupation${transformedOcuppation}`) ?? t("occupationNone")}
           </p>
         </div>
         <div className="mt-2">
