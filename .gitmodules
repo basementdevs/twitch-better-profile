@@ -1,9 +1,12 @@
 [submodule "tbp-extension"]
 	path = tbp-extension
 	url = https://github.com/basementdevs/tbp-extension
+        branch = develop
 [submodule "tbp-consumer-api"]
 	path = tbp-consumer-api
 	url = https://github.com/basementdevs/tbp-consumer-api
+        branch = develop
 [submodule "tbp-platform"]
 	path = tbp-platform
 	url = https://github.com/basementdevs/tbp-platform
+        branch = main
